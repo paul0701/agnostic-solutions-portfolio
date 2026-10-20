@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Lab | Paul Jones, Agnostic Solutions</title>
+<meta name="description" content="Work in progress and process improvements: query triage, absence reporting and other ways to save time. Describe your situation and I will take a look.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Lab | Paul Jones, Agnostic Solutions">
+<meta property="og:description" content="Work in progress and process improvements: query triage, absence reporting and other ways to save time. Describe your situation and I will take a look.">
+<meta property="og:image" content="assets/img/share.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f2f4f6">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap site-nav__inner">
+    <a class="brand" href="index.html" aria-label="Paul Jones, Agnostic Solutions, home"><span class="brand__name">Paul Jones</span><span class="brand__co">Agnostic Solutions</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks"><span class="nav-toggle__bars" aria-hidden="true"></span>Menu</button>
+    <div class="nav-links" id="navLinks"><a href="games.html">Games</a><a href="socratic-suite.html">Socratic Suite</a><a href="iq-suite.html">IQ Suite</a><a href="lab.html" aria-current="page">The Lab</a></div>
+  </div>
+</nav>
+<main id="main">
+
+<header class="hero hero--bench">
+  <div class="wrap hero__inner">
+    <div class="hero__text">
+      <h1 class="display">The Lab</h1>
+      <p class="lead">Work in progress, and the problems I like fixing.</p>
+    </div>
+    <div class="bench" id="bench" role="group" aria-label="Projects on the bench, shown as flasks. The fuller the flask, the further along the project."></div>
+  </div>
+</header>
+
+<section class="section" aria-labelledby="bench-h">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="h2" id="bench-h">On the bench</h2>
+      <p class="lead muted">The flasks above are this same list. The fuller the flask, the further along it is. Steam means it is being worked on, and frost means it is on ice for now.</p>
+    </div>
+    <div class="entries">
+      
+      <article class="entry" data-bench data-name="Trial Log" data-kind="conical" data-progress="55" data-state="active">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">Trial Log</h3><span class="tag">Dead by Daylight tool</span></div>
+          <p>A match tracker. Log which killer you faced and whether you escaped, then see your record by killer. A random perk generator sits alongside it for when you cannot decide on a build.</p>
+        </div>
+        <div class="entry__aside"><span class="status status--design">Active</span><div class="bar"><i></i></div><span class="small muted" data-progress-label></span></div>
+      </article>
+      
+      <article class="entry" data-bench data-name="The Hotel" data-kind="round" data-progress="35" data-state="active">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">The Hotel</h3><span class="tag">Horror game</span></div>
+          <p>A horror game that climbs a hotel from the foyer to the penthouse.</p>
+        </div>
+        <div class="entry__aside"><span class="status status--design">Active</span><div class="bar"><i></i></div><span class="small muted" data-progress-label></span></div>
+      </article>
+      
+      <article class="entry" data-bench data-name="991" data-kind="beaker" data-progress="60" data-state="active">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">991</h3><span class="tag">Dispatch game</span></div>
+          <p>A police dispatch game where the calls keep coming and you decide who goes where.</p>
+        </div>
+        <div class="entry__aside"><span class="status status--design">Active</span><div class="bar"><i></i></div><span class="small muted" data-progress-label></span></div>
+      </article>
+      
+      <article class="entry" data-bench data-name="Last Light" data-kind="tall" data-progress="15" data-state="active">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">Last Light</h3><span class="tag">Horror puzzle</span></div>
+          <p>A turn-based survival puzzle built around a torch and a creature in the dark.</p>
+        </div>
+        <div class="entry__aside"><span class="status status--design">Active</span><div class="bar"><i></i></div><span class="small muted" data-progress-label></span></div>
+      </article>
+      
+      <article class="entry" data-bench data-name="The Street" data-kind="round" data-progress="30" data-state="parked">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">The Street</h3><span class="tag">Horror game</span></div>
+          <p>Hunt for your lost dog on a dark street while something that is not your dog mimics it. Parked for now.</p>
+        </div>
+        <div class="entry__aside"><span class="status status--ice">On ice</span><div class="bar bar--ice"><i></i></div><span class="small muted" data-progress-label></span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint" id="time-savers" aria-labelledby="ts-h">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="h2" id="ts-h">Time savers</h2>
+      <p class="lead muted">Imagine this situation. Nobody is doing it wrong. The way something is done usually made sense when it started. The only question is whether there is a better way.</p>
+    </div>
+    <div class="entries">
+      
+      <article class="entry">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">Query triage</h3><span class="tag">Automation</span></div>
+          <dl class="parts">
+            <dt>The situation</dt><dd>Questions arrive in one general queue. Some are complicated and need a person. Many are people asking where to find something or who to speak to, and a person answers those on autopilot.</dd>
+            <dt>A better way</dt><dd>A front door reads each query first. Simple ones get pointed to the right page or person, anything urgent or sensitive goes straight to a human, and every query is tagged, so after a month you can see what people are really asking.</dd>
+            <dt>What I built</dt><dd>Safety Desk, a demo that answers health and safety questions only from public UK law and HSE guidance, with a source on every answer and a handover to a person for anything urgent or sensitive. Next is an insights view that shows the tagged queries, on sample data.</dd>
+          </dl>
+          <div class="helpful" data-helpful="query-triage"><button class="btn btn--small" type="button">This would help my team</button><span class="helpful__count"></span></div>
+        </div>
+        <div class="entry__aside"><span class="status status--use">Working demo</span></div>
+      </article>
+      
+      <article class="entry">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">Absence reporting in two uploads</h3><span class="tag">Reporting</span></div>
+          <dl class="parts">
+            <dt>The situation</dt><dd>A sickness absence report takes days of exporting, cleaning and checking, and the figures still get questioned.</dd>
+            <dt>A better way</dt><dd>Two standard reports go in and the whole picture comes out: absence rates, long term against short term, and the trend through the year, including people who changed department part way through.</dd>
+            <dt>What I built</dt><dd>A dashboard that takes the two uploads and does the rest.</dd>
+          </dl>
+          <div class="helpful" data-helpful="absence-reporting"><button class="btn btn--small" type="button">This would help my team</button><span class="helpful__count"></span></div>
+        </div>
+        <div class="entry__aside"><span class="status status--use">In use</span></div>
+      </article>
+      
+      <article class="entry">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">FinanceIQ</h3><span class="tag">Automation</span></div>
+          <dl class="parts">
+            <dt>The situation</dt><dd>Budget papers are long and dense, and it is hard to see where the money goes and what has changed.</dd>
+            <dt>A better way</dt><dd>A tool that reads a budget paper and explains it in plain English: where the money is going, what has moved since last time, and where the pressure is building.</dd>
+            <dt>What I built</dt><dd>Idea only so far.</dd>
+          </dl>
+          <div class="helpful" data-helpful="financeiq"><button class="btn btn--small" type="button">This would help my team</button><span class="helpful__count"></span></div>
+        </div>
+        <div class="entry__aside"><span class="status status--idea">Idea</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="situation" aria-labelledby="sit-h">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="h2" id="sit-h">Describe your situation</h2>
+      <p class="lead muted">Tell me what is happening and where it gets stuck. It comes straight to me. Leave an email if you would like a reply, or do not.</p>
+    </div>
+    <form class="form" name="lab-feedback" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="lab-feedback">
+      <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="field"><label for="f-situation">What is happening? <small>And where does it get stuck?</small></label><textarea id="f-situation" name="situation" required></textarea></div>
+      <div class="field"><label for="f-about">Which of these is it closest to?</label>
+        <select id="f-about" name="about"><option>Query triage</option><option>Absence reporting</option><option>FinanceIQ</option><option>Something else</option></select></div>
+      <div class="field"><label for="f-role">What do you do? <small>Optional</small></label><input id="f-role" name="role" type="text" autocomplete="organization-title"></div>
+      <div class="field"><label for="f-email">Email <small>Optional, only if you would like a reply</small></label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+      <div><button class="btn btn--primary" type="submit">Send</button></div>
+      <p class="form-note" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p>&copy; 2026 Paul Jones. Agnostic Solutions Ltd.</p>
+    <p><a href="mailto:paul@agnostic-solutions.co.uk">paul@agnostic-solutions.co.uk</a></p>
+  </div>
+</footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/hero-lab.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

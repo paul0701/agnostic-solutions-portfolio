@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paul Jones | Tools, dashboards, games and websites that work</title>
+<meta name="description" content="Paul Jones builds tools, dashboards, games and websites, and looks hard at how something is done before changing it. Agnostic Solutions.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Paul Jones | Tools, dashboards, games and websites that work">
+<meta property="og:description" content="Paul Jones builds tools, dashboards, games and websites, and looks hard at how something is done before changing it. Agnostic Solutions.">
+<meta property="og:image" content="assets/img/share.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f2f4f6">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap site-nav__inner">
+    <a class="brand" href="index.html" aria-label="Paul Jones, Agnostic Solutions, home"><span class="brand__name">Paul Jones</span><span class="brand__co">Agnostic Solutions</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks"><span class="nav-toggle__bars" aria-hidden="true"></span>Menu</button>
+    <div class="nav-links" id="navLinks"><a href="games.html">Games</a><a href="socratic-suite.html">Socratic Suite</a><a href="iq-suite.html">IQ Suite</a><a href="lab.html">The Lab</a></div>
+  </div>
+</nav>
+<main id="main">
+
+<header class="hero hero--home">
+  <div class="wrap hero__inner">
+    <div class="hero__text">
+      <h1 class="display">I find the better way to do it.</h1>
+      <p class="lead">I build tools, dashboards, games and websites that work, and I look hard at how something is done before I change it.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="games.html">See the games</a>
+        <a class="btn" href="lab.html#situation">Describe your situation</a>
+      </div>
+    </div>
+  </div>
+  <canvas class="ink" id="inkFx" aria-hidden="true"></canvas>
+  <button class="pencil" id="penBtn" type="button" aria-pressed="false" aria-label="Pick up the pencil and draw on the page">
+    <svg viewBox="0 0 64 300" aria-hidden="true">
+      <path d="M12 52h40v196H12z" fill="#f2c230"/><path d="M12 52h13v196H12z" fill="#d9a514"/><path d="M39 52h13v196H39z" fill="#f7d65a"/>
+      <path d="M12 248h40l-8 34H20z" fill="#e8c9a0"/><path d="M12 248h40l-2.5 10h-35z" fill="#d6b27f"/>
+      <path d="M20 282h24l-12 16z" fill="#2b3440"/>
+      <path d="M12 28a8 8 0 018-8h24a8 8 0 018 8v24H12z" fill="#e4572e"/><path d="M12 52h40v12H12z" fill="#b9bfc7"/><path d="M12 56h40M12 60h40" stroke="#8a929c" stroke-width="1.5"/>
+    </svg>
+    <span class="pencil__tag"><span class="pencil__say">Pick me up</span></span>
+  </button>
+  <div class="tools"><button class="replay" id="penClear" type="button" hidden>Clear</button></div>
+</header>
+
+<section class="section" aria-labelledby="start-h">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="h2" id="start-h">Where to start</h2>
+      <p class="lead muted">Each piece of work below says what it does and what it shows about how I think.</p>
+    </div>
+    <div class="entries">
+      <article class="entry">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">Pawn Force</h3><span class="tag">Game</span></div>
+          <p>A chess endless runner. You are a pawn, the pieces chasing you move the way the real ones do, and your score is your chess rating.</p>
+          <p class="muted">What it shows: a finished game that is free to play and live now.</p>
+        </div>
+        <div class="entry__aside">
+          <span class="status">Live now</span>
+          <a class="btn btn--small" href="https://pawn-force.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Pawn Force</a>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">The Ledger</h3><span class="tag">Learning tool</span></div>
+          <p>Free accountancy learning with flashcards and spaced repetition. It asks you a question before it explains, and it exists because the material that was already out there did not do the job.</p>
+          <p class="muted">What it shows: starting from the problem a learner actually has.</p>
+        </div>
+        <div class="entry__aside">
+          <span class="status">Live and growing</span>
+          <a class="btn btn--small" href="https://stalwart-cocada-ff9319.netlify.app" target="_blank" rel="noopener">Open The Ledger</a>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">Query triage</h3><span class="tag">Time saver</span></div>
+          <p>A front door for general enquiries. It points the simple ones to the right page or person, hands the rest to a human, and tags every query so you can see what people are really asking.</p>
+          <p class="muted">What it shows: not just answering faster, but finding out what the questions are telling you.</p>
+        </div>
+        <div class="entry__aside">
+          <span class="status status--use">Working demo</span>
+          <a class="btn btn--small" href="lab.html#time-savers">Read the story</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint" aria-labelledby="how-h">
+  <div class="wrap split">
+    <h2 class="h2" id="how-h">How I work</h2>
+    <div class="prose">
+      <p>I find a problem, I understand it, and I build something to fix it. Before any of that, I check that the problem is the one that was described. Often there is a simpler way of doing the job, and sometimes it is one the people doing it have stopped seeing because it has always been done that way.</p>
+      <p>Nobody is doing it wrong. The way something is done usually made sense when it started. The only question is whether there is a better way now.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="sites-h">
+  <div class="wrap">
+    <div class="section__head"><h2 class="h2" id="sites-h">Websites I have built</h2></div>
+    <div class="entries">
+      <article class="entry">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">One More Light</h3><span class="tag">Clothing shop</span></div>
+          <p>An online shop for comfortable, neurodiverse-friendly clothing, with designs inspired by the music that gets people through their darkest times.</p>
+        </div>
+        <div class="entry__aside"><a class="btn btn--small" href="https://onemorelightuk.teemill.com/" target="_blank" rel="noopener">Visit the shop</a></div>
+      </article>
+      <article class="entry">
+        <div class="entry__body">
+          <div class="entry__title"><h3 class="h3">iNDepth Inclusion</h3><span class="tag">Client site</span></div>
+          <p>A website for a neuroinclusion consultancy. Direct, clear and professional, built so the work can speak for itself.</p>
+        </div>
+        <div class="entry__aside"><a class="btn btn--small" href="https://shimmering-lamington-9e8817.netlify.app" target="_blank" rel="noopener">Visit the site</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band on-dark" aria-labelledby="talk-h">
+  <div class="wrap band__inner">
+    <div>
+      <h2 class="h2" id="talk-h">Got a situation that could work better?</h2>
+      <p class="lead" style="margin-top:14px">Tell me what is happening and where it gets stuck. No blame, just the situation.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="lab.html#situation">Describe your situation</a>
+      <a class="btn" href="mailto:paul@agnostic-solutions.co.uk">Email me</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p>&copy; 2026 Paul Jones. Agnostic Solutions Ltd.</p>
+    <p><a href="mailto:paul@agnostic-solutions.co.uk">paul@agnostic-solutions.co.uk</a></p>
+  </div>
+</footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/hero-ink.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

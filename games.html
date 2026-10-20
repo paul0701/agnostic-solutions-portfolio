@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Games | Paul Jones, Agnostic Solutions</title>
+<meta name="description" content="Six free browser games with leaderboards, and a vote every three months on which one gets built next.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Games | Paul Jones, Agnostic Solutions">
+<meta property="og:description" content="Six free browser games with leaderboards, and a vote every three months on which one gets built next.">
+<meta property="og:image" content="assets/img/share.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f2f4f6">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap site-nav__inner">
+    <a class="brand" href="index.html" aria-label="Paul Jones, Agnostic Solutions, home"><span class="brand__name">Paul Jones</span><span class="brand__co">Agnostic Solutions</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks"><span class="nav-toggle__bars" aria-hidden="true"></span>Menu</button>
+    <div class="nav-links" id="navLinks"><a href="games.html" aria-current="page">Games</a><a href="socratic-suite.html">Socratic Suite</a><a href="iq-suite.html">IQ Suite</a><a href="lab.html">The Lab</a></div>
+  </div>
+</nav>
+<main id="main">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-pawn" viewBox="0 0 48 48"><circle cx="24" cy="13" r="6"/><path d="M19 25h10M20 42c0-9 1-13 4-17 3 4 4 8 4 17M14 42h20"/></symbol>
+  <symbol id="i-coin" viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="9"/><path d="M24 15v18M20 24h8"/></symbol>
+  <symbol id="i-board" viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32"/><path d="M16 8v32M24 8v32M32 8v32M8 16h32M8 24h32M8 32h32"/><path fill="currentColor" stroke="none" opacity=".45" d="M8 8h8v8H8zM24 8h8v8h-8zM16 16h8v8h-8zM32 16h8v8h-8zM8 24h8v8H8zM24 24h8v8h-8zM16 32h8v8h-8zM32 32h8v8h-8z"/></symbol>
+  <symbol id="i-blade" viewBox="0 0 48 48"><path d="M8 40L38 10"/><path d="M28 8l4-4M38 20l6-2M12 30l-6 2"/><path d="M8 40l6-2-4-4z" fill="currentColor"/></symbol>
+  <symbol id="i-peak" viewBox="0 0 48 48"><path d="M4 41L19 13l9 15 5-8 11 21z"/><path d="M19 13V6l7 2-7 3"/></symbol>
+  <symbol id="i-bike" viewBox="0 0 48 48"><circle cx="12" cy="33" r="6"/><circle cx="37" cy="33" r="6"/><path d="M12 33l8-13h11l6 13M20 20l5 13 6-13M17 14h6"/><rect x="26" y="8" width="9" height="5" rx="2"/></symbol>
+  <symbol id="i-hotel" viewBox="0 0 48 48"><rect x="12" y="6" width="24" height="36"/><path d="M18 14h4M26 14h4M18 22h4M26 22h4M18 30h4M26 30h4M21 42v-6h6v6"/></symbol>
+  <symbol id="i-siren" viewBox="0 0 48 48"><path d="M12 38h24M15 38V26a9 9 0 0118 0v12M24 10V5M9 17l-4-3M39 17l4-3M24 20v8"/></symbol>
+  <symbol id="i-torch" viewBox="0 0 48 48"><path d="M8 34l14-6 6 6-8 10z"/><path d="M30 20l12-6M32 27l12 2M26 15l5-11"/></symbol>
+  <symbol id="i-lens" viewBox="0 0 48 48"><circle cx="20" cy="20" r="11"/><path d="M28 28l13 13M15 17a6 6 0 016-4"/></symbol>
+  <symbol id="i-table" viewBox="0 0 48 48"><path d="M6 22h36M11 22v19M37 22v19M18 22l-3 7M30 22l3 7"/><path d="M19 8h10l-1 12h-8z"/></symbol>
+  <symbol id="i-wall" viewBox="0 0 48 48"><path d="M6 10h36v9H6zM6 19h18v9H6zM24 19h18v9H24zM6 28h36v9H6z"/></symbol>
+</svg>
+<header class="hero hero--night on-dark">
+  <canvas class="fx" id="ufoFx" aria-hidden="true"></canvas>
+  <div class="wrap hero__inner">
+    <div class="hero__text">
+      <h1 class="display">Games</h1>
+      <p class="lead">Six games that run in your browser, work on a phone and cost nothing. Every three months a new one ships, and you vote on which.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#play">Play now</a>
+        <a class="btn" href="#next">Vote on the next one</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="play" aria-labelledby="play-h">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="h2" id="play-h">Play now</h2>
+      <p class="lead muted">Open a link and you are playing. No ads, no installs and no email address needed.</p>
+    </div>
+    <div class="tiles">
+      <article class="tile">
+        <div class="tile__art" style="--tone:#1f2a5c;--glyph:#f4d77a"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-pawn"/></svg><img class="tile__shot" src="assets/img/games/pawn-force.jpg" alt="Screenshot of Pawn Force" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__body">
+          <div><h3 class="h3">Pawn Force</h3><p class="tag">Chess endless runner</p></div>
+          <p>A chess endless runner. You are a pawn on a three lane board, and the pieces coming at you move like the real thing: rooks charge, bishops slide along the diagonals, knights hop in an L. Your score is your chess rating.</p>
+          <div class="tile__foot">
+            <a class="btn btn--primary" href="https://pawn-force.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Pawn Force</a>
+            
+          </div>
+        </div>
+      </article>
+      <article class="tile">
+        <div class="tile__art" style="--tone:#12343a;--glyph:#ffd166"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-coin"/></svg><img class="tile__shot" src="assets/img/games/blockchain-breakout.jpg" alt="Screenshot of Blockchain Breakout" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__body">
+          <div><h3 class="h3">Blockchain Breakout</h3><p class="tag">Endless runner</p></div>
+          <p>You are a coin escaping a blockchain. Run, dodge and collect gems while set pieces hit mid run: a scanner drone and a collapsing floor (the Rug Pull), a wrong chain that halves your score (the Halving) and screen interference with phantom obstacles (the Hack).</p>
+          <div class="tile__foot">
+            <a class="btn btn--primary" href="https://blockchain-breakout.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Blockchain Breakout</a>
+            <span class="small muted">Has a leaderboard</span>
+          </div>
+        </div>
+      </article>
+      <article class="tile">
+        <div class="tile__art" style="--tone:#3d2a1c;--glyph:#f1e2c0"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-board"/></svg><img class="tile__shot" src="assets/img/games/guess-the-opening.jpg" alt="Screenshot of Guess the Opening" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__body">
+          <div><h3 class="h3">Guess the Opening</h3><p class="tag">Daily chess game</p></div>
+          <p>Moves appear one at a time and you hit &ldquo;I know it&rdquo; the moment you recognise the opening. Pick it from four answers, then the variation. A wrong answer wipes your multiplier. There is a new opening every day, like Wordle, and a free play mode for practice.</p>
+          <div class="tile__foot">
+            <a class="btn btn--primary" href="https://guess-the-opening.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Guess the Opening</a>
+            <span class="small muted">Has a leaderboard</span>
+          </div>
+        </div>
+      </article>
+      <article class="tile">
+        <div class="tile__art" style="--tone:#3a1220;--glyph:#ff9a6b"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-blade"/></svg><img class="tile__shot" src="assets/img/games/slash-and-dash.jpg" alt="Screenshot of Slash &amp; Dash" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__body">
+          <div><h3 class="h3">Slash &amp; Dash</h3><p class="tag">Arcade runner</p></div>
+          <p>A side scrolling arcade runner with a Halloween theme and a Christmas theme you can switch between mid run. Dodge the cops, grab power-ups and build up to the blade boost. Install it to your home screen and it plays offline.</p>
+          <div class="tile__foot">
+            <a class="btn btn--primary" href="https://slashanddash.online" target="_blank" rel="noopener">Play Slash &amp; Dash</a>
+            <span class="small muted">Has a leaderboard</span>
+          </div>
+        </div>
+      </article>
+      <article class="tile">
+        <div class="tile__art" style="--tone:#17334a;--glyph:#cfe8ff"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-peak"/></svg><img class="tile__shot" src="assets/img/games/vertical-limit.jpg" alt="Screenshot of Vertical Limit" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__body">
+          <div><h3 class="h3">Vertical Limit</h3><p class="tag">Tap to climb</p></div>
+          <p>Tap the next grip and climb while rocks fall from above. At every base camp you can bank your points and stop, or push on and risk losing the lot.</p>
+          <div class="tile__foot">
+            <a class="btn btn--primary" href="https://vertical-limit.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Vertical Limit</a>
+            <span class="status status--soon">Leaderboard coming</span>
+          </div>
+        </div>
+      </article>
+      <article class="tile">
+        <div class="tile__art" style="--tone:#2a3a1c;--glyph:#ffe28a"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-bike"/></svg><img class="tile__shot" src="assets/img/games/courier-run.jpg" alt="Screenshot of Courier Run" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__body">
+          <div><h3 class="h3">Courier Run</h3><p class="tag">Arcade runner</p></div>
+          <p>Be the paperboy. Jump the dogs tearing across the road and land your papers on the doorsteps at the same time. Miss five deliveries and the round is over, so the trick is doing both at once.</p>
+          <div class="tile__foot">
+            <a class="btn btn--primary" href="https://courier-run.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Courier Run</a>
+            
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint" id="next" data-vote data-round="2026-q4" data-closes="2026-12-31" aria-labelledby="next-h">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="h2" id="next-h">Pick the next game</h2>
+      <p class="lead muted">Every three months a new game ships, and the idea with the most votes is the one I build. One vote each. When the round closes, a fresh set of ideas goes up.</p>
+      <div class="round"><span>Winter round</span><span>Closes 31 December 2026</span></div>
+    </div>
+    <div class="tiles">
+      <article class="tile" data-id="the-hotel">
+        <div class="tile__art" style="--tone:#3b1f2e;--glyph:#f0b7c8"><span class="tile__flag">Concept art</span><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-hotel"/></svg></div>
+        <div class="tile__body">
+          <div><h3 class="h3">The Hotel</h3><p class="tag">Horror</p></div>
+          <p>A horror game set in a hotel you have to climb, from the foyer to the penthouse, one floor at a time.</p>
+          <div class="tile__foot">
+            <button type="button" class="btn">Vote for this</button>
+            <div class="result" hidden><div class="result__top"><span class="result__who"></span><span class="result__pct"></span></div><div class="bar"><i></i></div></div>
+          </div>
+        </div>
+      </article>
+      <article class="tile" data-id="991">
+        <div class="tile__art" style="--tone:#11264a;--glyph:#ff7b7b"><span class="tile__flag">Concept art</span><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-siren"/></svg></div>
+        <div class="tile__body">
+          <div><h3 class="h3">991</h3><p class="tag">Dispatch</p></div>
+          <p>A police dispatch game. The calls keep coming and you decide who goes where.</p>
+          <div class="tile__foot">
+            <button type="button" class="btn">Vote for this</button>
+            <div class="result" hidden><div class="result__top"><span class="result__who"></span><span class="result__pct"></span></div><div class="bar"><i></i></div></div>
+          </div>
+        </div>
+      </article>
+      <article class="tile" data-id="last-light">
+        <div class="tile__art" style="--tone:#14181f;--glyph:#ffe39a"><span class="tile__flag">Concept art</span><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-torch"/></svg></div>
+        <div class="tile__body">
+          <div><h3 class="h3">Last Light</h3><p class="tag">Horror puzzle</p></div>
+          <p>A turn-based survival puzzle built around a torch and a creature in the dark.</p>
+          <div class="tile__foot">
+            <button type="button" class="btn">Vote for this</button>
+            <div class="result" hidden><div class="result__top"><span class="result__who"></span><span class="result__pct"></span></div><div class="bar"><i></i></div></div>
+          </div>
+        </div>
+      </article>
+      <article class="tile" data-id="jude-investigates">
+        <div class="tile__art" style="--tone:#3a2b13;--glyph:#f3d9a4"><span class="tile__flag">Concept art</span><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-lens"/></svg></div>
+        <div class="tile__body">
+          <div><h3 class="h3">Jude Investigates</h3><p class="tag">Mystery</p></div>
+          <p>A detective game in the style of Carmen Sandiego. A crook is on the run around the world, so question the locals, check the case file and choose the next stop before the trail goes cold.</p>
+          <div class="tile__foot">
+            <button type="button" class="btn">Vote for this</button>
+            <div class="result" hidden><div class="result__top"><span class="result__who"></span><span class="result__pct"></span></div><div class="bar"><i></i></div></div>
+          </div>
+        </div>
+      </article>
+      <article class="tile" data-id="party-trick">
+        <div class="tile__art" style="--tone:#2c1b3f;--glyph:#e8c6ff"><span class="tile__flag">Concept art</span><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-table"/></svg></div>
+        <div class="tile__body">
+          <div><h3 class="h3">Party Trick</h3><p class="tag">Physics</p></div>
+          <p>A physics game about pulling a tablecloth out from under a laid table without spilling a thing.</p>
+          <div class="tile__foot">
+            <button type="button" class="btn">Vote for this</button>
+            <div class="result" hidden><div class="result__top"><span class="result__who"></span><span class="result__pct"></span></div><div class="bar"><i></i></div></div>
+          </div>
+        </div>
+      </article>
+      <article class="tile" data-id="the-wall">
+        <div class="tile__art" style="--tone:#3a2a22;--glyph:#e6b7a0"><span class="tile__flag">Concept art</span><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-wall"/></svg></div>
+        <div class="tile__body">
+          <div><h3 class="h3">The Wall</h3><p class="tag">Daily multiplayer</p></div>
+          <p>Builders against breakers. Everyone gets one brick move a day, and the wall is whatever the crowd makes of it.</p>
+          <div class="tile__foot">
+            <button type="button" class="btn">Vote for this</button>
+            <div class="result" hidden><div class="result__top"><span class="result__who"></span><span class="result__pct"></span></div><div class="bar"><i></i></div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="vote-note" aria-live="polite"></p>
+  </div>
+</section>
+
+<section class="section" aria-label="Say thanks">
+  <div class="wrap">
+    <div class="thanks" data-thanks hidden>
+      <p>If one of these gave you a good five minutes and you would like to say thanks, there is a cup of tea on Patreon for two pounds. It is never expected.</p>
+      <a class="btn" href="#">A cup of tea on Patreon</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p>&copy; 2026 Paul Jones. Agnostic Solutions Ltd.</p>
+    <p><a href="mailto:paul@agnostic-solutions.co.uk">paul@agnostic-solutions.co.uk</a></p>
+  </div>
+</footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/hero-ufo.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
