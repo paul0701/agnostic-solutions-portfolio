@@ -22,7 +22,7 @@
     'hd':      { bufH: 0,   poster: 0 },
     'next-gen':{ bufH: 0,   poster: 0, nextgen: true }
   };
-  var mode = 'hd';
+  var mode = '16-bit';   /* first impression starts blocky; climbs as you pick higher */
   try { var saved = localStorage.getItem('pj_defn'); if (saved && MODES[saved]) mode = saved; } catch (e) {}
 
   function rnd(a, b) { return a + Math.random() * (b - a); }
