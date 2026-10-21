@@ -5,6 +5,8 @@ The one exception is the vote function: it must live at `netlify/functions/votes
 In GitHub use Add file > Create new file, type `netlify/functions/votes.mjs` as the name (typing the slashes makes the folders), paste in the contents of votes.mjs, and commit. Then delete the loose votes.mjs from the repo root.
 Game screenshots go in the repo root as pawn-force.jpg, blockchain-breakout.jpg, guess-the-opening.jpg, slash-and-dash.jpg, vertical-limit.jpg, courier-run.jpg, rum-to-riches.jpg and ninja-dojo.jpg.
 
+Each tile can also show a muted, click-to-play gameplay clip. Drop a `<slug>.mp4` in the repo root (same names as the screenshots) and a play button appears on that tile automatically; with no clip the tile just shows its screenshot/icon. The `.jpg` doubles as the clip's poster. Keep clips short (~10s) and small (720p or less, well under ~1&nbsp;MB).
+
 # Deploying the portfolio
 
 Static site plus one Netlify Function. No build command.
