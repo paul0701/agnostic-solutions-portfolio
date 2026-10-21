@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Lab | Paul Jones, Agnostic Solutions</title>
-<meta name="description" content="Work in progress and process improvements: query triage, absence reporting and other ways to save time. Describe your situation and I will take a look.">
+<meta name="description" content="Work in progress and process improvements: query triage, absence reporting and other ways to save time. Pour two flasks together to find out what is in the lab.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Lab | Paul Jones, Agnostic Solutions">
-<meta property="og:description" content="Work in progress and process improvements: query triage, absence reporting and other ways to save time. Describe your situation and I will take a look.">
+<meta property="og:description" content="Work in progress and process improvements: query triage, absence reporting and other ways to save time. Pour two flasks together to find out what is in the lab.">
 <meta property="og:image" content="share.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f2f4f6">
@@ -31,53 +31,66 @@
   <div class="wrap hero__inner">
     <div class="hero__text">
       <h1 class="display">The Lab</h1>
-      <p class="lead">Work in progress, and the problems I like fixing.</p>
+      <p class="lead">Work in progress, and the problems I like fixing. Pour two flasks together and see what turns up.</p>
     </div>
-    <div class="bench" id="bench" role="group" aria-label="Projects on the bench, shown as flasks. The fuller the flask, the further along the project."></div>
+
+    <div class="lab" id="lab">
+      <div class="lab__stage">
+        <svg class="lab__stream" aria-hidden="true" focusable="false"></svg>
+        <div class="lab__shelf" role="group" aria-label="Seven flasks. Pick two to pour into the empty flask below."></div>
+        <div class="lab__vessel" id="vessel"></div>
+      </div>
+      <p class="lab__say" id="say" aria-live="polite">Pick two flasks and see what you make.</p>
+      <div class="lab__tools">
+        <span class="lab__count" id="count">0 of 8 found</span>
+        <button class="linkbtn" id="empty" type="button" hidden>Empty the flask</button>
+        <button class="linkbtn" id="skip" type="button">Skip the experiment and show everything</button>
+      </div>
+    </div>
   </div>
 </header>
 
-<section class="section" aria-labelledby="bench-h">
+<section class="section" id="bench-sec" aria-labelledby="bench-h" hidden>
   <div class="wrap">
     <div class="section__head">
       <h2 class="h2" id="bench-h">On the bench</h2>
-      <p class="lead muted">The flasks above are this same list. The fuller the flask, the further along it is. Steam means it is being worked on, and frost means it is on ice for now.</p>
+      <p class="lead muted">Work in progress. The fuller the bar, the further along it is. Frozen means it is on ice for now.</p>
     </div>
     <div class="entries">
-      
-      <article class="entry" data-bench data-name="Trial Log" data-kind="conical" data-progress="55" data-state="active">
+
+      <article class="entry" data-find="trial-log" data-progress="55" data-state="active" tabindex="-1" hidden>
         <div class="entry__body">
           <div class="entry__title"><h3 class="h3">Trial Log</h3><span class="tag">Dead by Daylight tool</span></div>
           <p>A match tracker. Log which killer you faced and whether you escaped, then see your record by killer. A random perk generator sits alongside it for when you cannot decide on a build.</p>
         </div>
         <div class="entry__aside"><span class="status status--design">Active</span><div class="bar"><i></i></div><span class="small muted" data-progress-label></span></div>
       </article>
-      
-      <article class="entry" data-bench data-name="The Hotel" data-kind="round" data-progress="35" data-state="active">
+
+      <article class="entry" data-find="the-hotel" data-progress="35" data-state="active" tabindex="-1" hidden>
         <div class="entry__body">
           <div class="entry__title"><h3 class="h3">The Hotel</h3><span class="tag">Horror game</span></div>
           <p>A horror game that climbs a hotel from the foyer to the penthouse.</p>
         </div>
         <div class="entry__aside"><span class="status status--design">Active</span><div class="bar"><i></i></div><span class="small muted" data-progress-label></span></div>
       </article>
-      
-      <article class="entry" data-bench data-name="991" data-kind="beaker" data-progress="60" data-state="active">
+
+      <article class="entry" data-find="991" data-progress="60" data-state="active" tabindex="-1" hidden>
         <div class="entry__body">
           <div class="entry__title"><h3 class="h3">991</h3><span class="tag">Dispatch game</span></div>
           <p>A police dispatch game where the calls keep coming and you decide who goes where.</p>
         </div>
         <div class="entry__aside"><span class="status status--design">Active</span><div class="bar"><i></i></div><span class="small muted" data-progress-label></span></div>
       </article>
-      
-      <article class="entry" data-bench data-name="Last Light" data-kind="tall" data-progress="15" data-state="active">
+
+      <article class="entry" data-find="last-light" data-progress="15" data-state="active" tabindex="-1" hidden>
         <div class="entry__body">
           <div class="entry__title"><h3 class="h3">Last Light</h3><span class="tag">Horror puzzle</span></div>
           <p>A turn-based survival puzzle built around a torch and a creature in the dark.</p>
         </div>
         <div class="entry__aside"><span class="status status--design">Active</span><div class="bar"><i></i></div><span class="small muted" data-progress-label></span></div>
       </article>
-      
-      <article class="entry" data-bench data-name="The Street" data-kind="round" data-progress="30" data-state="parked">
+
+      <article class="entry" data-find="the-street" data-progress="30" data-state="parked" tabindex="-1" hidden>
         <div class="entry__body">
           <div class="entry__title"><h3 class="h3">The Street</h3><span class="tag">Horror game</span></div>
           <p>Hunt for your lost dog on a dark street while something that is not your dog mimics it. Parked for now.</p>
@@ -88,15 +101,15 @@
   </div>
 </section>
 
-<section class="section section--tint" id="time-savers" aria-labelledby="ts-h">
+<section class="section section--tint" id="ts-sec" aria-labelledby="ts-h" hidden>
   <div class="wrap">
     <div class="section__head">
       <h2 class="h2" id="ts-h">Time savers</h2>
       <p class="lead muted">Imagine this situation. Nobody is doing it wrong. The way something is done usually made sense when it started. The only question is whether there is a better way.</p>
     </div>
     <div class="entries">
-      
-      <article class="entry">
+
+      <article class="entry" data-find="query-triage" tabindex="-1" hidden>
         <div class="entry__body">
           <div class="entry__title"><h3 class="h3">Query triage</h3><span class="tag">Automation</span></div>
           <dl class="parts">
@@ -108,8 +121,8 @@
         </div>
         <div class="entry__aside"><span class="status status--use">Working demo</span></div>
       </article>
-      
-      <article class="entry">
+
+      <article class="entry" data-find="absence-reporting" tabindex="-1" hidden>
         <div class="entry__body">
           <div class="entry__title"><h3 class="h3">Absence reporting in two uploads</h3><span class="tag">Reporting</span></div>
           <dl class="parts">
@@ -121,8 +134,8 @@
         </div>
         <div class="entry__aside"><span class="status status--use">In use</span></div>
       </article>
-      
-      <article class="entry">
+
+      <article class="entry" data-find="financeiq" tabindex="-1" hidden>
         <div class="entry__body">
           <div class="entry__title"><h3 class="h3">FinanceIQ</h3><span class="tag">Automation</span></div>
           <dl class="parts">
