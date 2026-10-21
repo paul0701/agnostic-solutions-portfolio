@@ -143,4 +143,63 @@
       });
     });
   }
+
+  /* ---- Gameplay previews: a play button appears only where a clip exists ---- */
+  var previews = [].slice.call(document.querySelectorAll('[data-preview]'));
+  if (previews.length) {
+    previews.forEach(function (art) {
+      var slug = art.getAttribute('data-preview');
+      if (!slug) return;
+      var src = slug + '.mp4';
+      var tile = art.closest('.tile');
+      var h3 = tile && tile.querySelector('.h3');
+      var name = h3 ? h3.textContent.trim() : 'the game';
+
+      var vid = document.createElement('video');
+      vid.className = 'tile__vid';
+      vid.muted = true; vid.loop = true; vid.preload = 'none';
+      vid.playsInline = true; vid.setAttribute('playsinline', '');
+      vid.poster = slug + '.jpg';
+      vid.src = src;
+
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'tile__play'; btn.hidden = true;
+      btn.setAttribute('aria-label', 'Play ' + name + ' gameplay');
+      btn.innerHTML = '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M17 13l18 11-18 11z"/></svg>';
+
+      art.appendChild(vid);
+      art.appendChild(btn);
+
+      /* Only reveal the control once we know a clip is actually there. */
+      fetch(src, { method: 'HEAD' }).then(function (r) {
+        if (r && r.ok) btn.hidden = false;
+      }).catch(function () {});
+
+      btn.addEventListener('click', function () {
+        if (art.classList.contains('is-playing') && !vid.paused) {
+          vid.pause();
+          art.classList.remove('is-playing');
+          btn.setAttribute('aria-label', 'Play ' + name + ' gameplay');
+          return;
+        }
+        art.classList.add('is-playing');
+        btn.setAttribute('aria-label', 'Pause ' + name + ' gameplay');
+        var p = vid.play();
+        if (p && p.catch) p.catch(function () { art.classList.remove('is-playing'); });
+      });
+
+      /* Pause and reset when the tile scrolls out of view. */
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting && !vid.paused) {
+              vid.pause();
+              art.classList.remove('is-playing');
+              btn.setAttribute('aria-label', 'Play ' + name + ' gameplay');
+            }
+          });
+        }, { threshold: 0.25 }).observe(art);
+      }
+    });
+  }
 })();
