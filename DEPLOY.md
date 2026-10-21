@@ -3,7 +3,7 @@
 Every file sits in one folder (no assets folder). Upload them all to the repo root.
 The one exception is the vote function: it must live at `netlify/functions/votes.mjs`.
 In GitHub use Add file > Create new file, type `netlify/functions/votes.mjs` as the name (typing the slashes makes the folders), paste in the contents of votes.mjs, and commit. Then delete the loose votes.mjs from the repo root.
-Game screenshots go in the repo root as pawn-force.jpg, blockchain-breakout.jpg, guess-the-opening.jpg, slash-and-dash.jpg, vertical-limit.jpg and courier-run.jpg.
+Game screenshots go in the repo root as pawn-force.jpg, blockchain-breakout.jpg, guess-the-opening.jpg, slash-and-dash.jpg, vertical-limit.jpg, courier-run.jpg, rum-to-riches.jpg and ninja-dojo.jpg.
 
 # Deploying the portfolio
 
