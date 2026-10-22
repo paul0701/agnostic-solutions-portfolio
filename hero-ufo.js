@@ -79,7 +79,7 @@
     narrow = r.width < 760;
     dprK = dpr; W = Math.max(8, Math.round(r.width * dpr)); H = Math.max(8, Math.round(r.height * dpr));
     cv.width = W; cv.height = H;
-    stars = [];
+    stars = []; buildTown();
     for (var i = 0; i < 120; i++) stars.push({ x: Math.random(), y: Math.random() * 0.85, z: rnd(0.3, 1), p: Math.random() * 6 });
     if (reduce) { for (var k = 0; k < 70; k++) step(1 / 30); frame(); }
   }
@@ -133,6 +133,7 @@
     gr.addColorStop(0, '#16224d'); gr.addColorStop(1, '#070b22');
     g.fillStyle = gr; g.fillRect(0, view.gy, w, h - view.gy);
     g.fillStyle = 'rgba(140,170,255,0.35)'; g.fillRect(0, view.gy, w, 1);
+    drawTown(g, w, h, Math.round(view.gy), Math.max(2, h * 0.005), false);
     }
 
     var gpt = proj(ufo.x, view.ground, ufo.z), sr = view.f * S * 1.05 / ufo.z;
@@ -212,6 +213,7 @@
     }
     g.fillStyle = rgb(PAL[15]); g.fillRect(0, gy, w, h - gy);
     g.fillStyle = rgb(PAL[3]); g.fillRect(0, gy, w, 1);
+    drawTown(g, w, h, gy, 1, true);
     var gh = h - gy, rows = m.pal ? 5 : 8, k;
     g.fillStyle = rgb(PAL[2]);
     for (k = 0; k < rows; k++) {                                        /* horizontal lines rush toward you */
@@ -223,6 +225,45 @@
       var ex = (px - gpt[0]) / sr, ey = (py - gpt[1]) / ry;
       if (ex * ex + ey * ey <= 1 && ((px + py) & 1) === 0) g.fillRect(px, py, 1, 1);
     }
+  }
+
+
+  /* a little town on the horizon, built once per size: houses, a church spire and a few lit windows */
+  var town = [];
+  function buildTown() {
+    var seed = 7, x = -0.01;
+    function r() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    town = [];
+    while (x < 1.02) {
+      var bw = 0.022 + r() * 0.03, kind = r();
+      town.push({ x: x, w: bw, h: 0.045 + r() * 0.06, roof: kind < 0.45 ? 'gable' : 'flat', hue: r(), seed: Math.floor(r() * 1000) });
+      x += bw + 0.004 + r() * 0.01;
+    }
+    var ci = Math.floor(town.length * 0.7); town[ci].roof = 'spire'; town[ci].h = 0.14; town[ci].w = 0.032;
+  }
+  /* u = size of one window in drawing units; pixel modes pass 1 so everything stays on the pixel grid */
+  function drawTown(g, w, h, gy, u, pixel) {
+    var T4 = Math.floor(T / 5);
+    town.forEach(function (b) {
+      var fall = 0.55 + 0.45 * b.x, bx = Math.round(b.x * w), bw = Math.max(5, Math.round(b.w * w)), bh = Math.round(b.h * h * fall);
+      var top = gy - bh;
+      g.fillStyle = pixel ? rgb(b.hue > 0.5 ? PAL[1] : PAL[15]) : (b.hue > 0.5 ? '#1b2a5e' : '#141c44');
+      g.fillRect(bx, top, bw, bh);
+      if (b.roof === 'gable') {
+        for (var i = 0; i < Math.ceil(bw / 2); i++) g.fillRect(bx + i, top - Math.ceil(bw / 2) + i + 1, bw - i * 2, 1);
+      } else if (b.roof === 'spire') {
+        var sw = Math.max(1, Math.round(bw * 0.3)), sh = Math.round(h * 0.07);
+        g.fillRect(bx + Math.round((bw - sw) / 2), top - sh, sw, sh);
+        g.fillRect(bx + Math.round(bw / 2), top - sh - Math.max(2, Math.round(u * 2)), Math.max(1, Math.round(u * 0.8)), Math.max(2, Math.round(u * 2)));
+      }
+      var step = Math.max(2, Math.round(u * 2.6)), ww = Math.max(1, Math.round(u)), wh = Math.max(1, Math.round(u * 1.4)), n = 0;
+      for (var wy = top + step; wy < gy - step; wy += step + 1) for (var wx = bx + 2; wx < bx + bw - ww - 1; wx += step) {
+        n++;
+        if ((b.seed + n * 7 + T4) % 5 === 0) continue;
+        g.fillStyle = pixel ? rgb((b.seed + n) % 4 === 0 ? PAL[14] : PAL[6]) : ((b.seed + n) % 4 === 0 ? '#ffa24a' : '#ffd23f');
+        g.fillRect(wx, wy, ww, wh);
+      }
+    });
   }
 
   function nearest(r, g, b) {
