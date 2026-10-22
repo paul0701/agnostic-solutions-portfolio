@@ -358,6 +358,16 @@ canvas.ink { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3
   background: rgba(0, 0, 0, 0.42); padding: 3px 9px; border-radius: 2px;
 }
 
+.tile__flag { z-index: 2; }
+/* Eight games on a three column grid leaves two orphans, so the newest sits wide and the rest fill three full rows. */
+@media (min-width: 980px) {
+  .tile--feature { grid-column: span 2; flex-direction: row; }
+  .tile--feature .tile__art { flex: 0 0 58%; aspect-ratio: auto; min-height: 100%; }
+  .tile--feature .tile__shot { object-position: left center; }
+  .tile--feature .tile__body { justify-content: center; padding: 28px 30px 30px; }
+  .tile--feature .tile__body p { font-size: 1.0625rem; }
+}
+
 /* ---- Gameplay preview (click to play, muted) ---- */
 .tile__vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.25s ease; z-index: 1; pointer-events: none; }
 .tile__art.is-playing .tile__vid { opacity: 1; }

@@ -7,21 +7,26 @@
   var cv = document.getElementById('ufoFx');
   if (!cv) return;
   var hero = cv.parentElement, ctx = cv.getContext('2d');
-  var oc = document.createElement('canvas'), octx = oc.getContext('2d');   // low-res buffer (pixel modes)
+  var oc = document.createElement('canvas'), octx = oc.getContext('2d', { willReadFrequently: true });   // low-res buffer (pixel modes)
+  var uc = document.createElement('canvas'), uctx = uc.getContext('2d', { willReadFrequently: true });   // saucer layer (pixel modes)
   var bc = document.createElement('canvas'), bctx = bc.getContext('2d');   // bloom buffer (next-gen)
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var W = 8, H = 8, T = 0, last = 0, raf = 0, visible = true, narrow = false;
+  var W = 8, H = 8, dprK = 1, T = 0, last = 0, raf = 0, visible = true, narrow = false;
   var stars = [], bolts = [], sparks = [], ufo = { t: 1.2, fire: 0.6, side: 1 };
   var view = { f: 600, cx: 0, cy: 0, ground: 1, gy: 0 };
 
-  /* definition tiers. bufH>0 renders the scene into a short buffer then upscales
-     with smoothing off (pixel-art); poster quantises the palette. */
+  /* definition tiers. px>0 renders the scene into a small buffer whose pixels are px device
+     pixels square, then upscales with smoothing off. 16-bit snaps every colour to a fixed
+     16-colour palette, flat shaded with a hard outline; 32-bit keeps 64 colours and shine. */
   var MODES = {
-    '16-bit':  { bufH: 66,  poster: 4, flat: true },
-    '32-bit':  { bufH: 132, poster: 8, flat: false },
-    'hd':      { bufH: 0,   poster: 0 },
-    'next-gen':{ bufH: 0,   poster: 0, nextgen: true }
+    '16-bit':  { px: 5, pal: true, flat: true, outline: true, stars: 70 },
+    '32-bit':  { px: 3, levels: 4, flat: false, outline: false, stars: 110 },
+    'hd':      { px: 0 },
+    'next-gen':{ px: 0, nextgen: true }
   };
+  var PAL = [[10,14,39],[27,42,94],[58,79,160],[122,142,224],[159,230,255],[232,251,255],[255,210,63],[255,95,138],
+             [74,84,112],[141,154,181],[201,211,230],[45,54,82],[90,58,122],[182,156,255],[255,162,74],[22,34,77]];
+  function rgb(c) { return 'rgb(' + c[0] + ',' + c[1] + ',' + c[2] + ')'; }
   var mode = '16-bit';   /* first impression starts blocky; climbs as you pick higher */
   try { var saved = localStorage.getItem('pj_defn'); if (saved && MODES[saved]) mode = saved; } catch (e) {}
 
@@ -61,10 +66,10 @@
   /* view params for a given pixel size (shared by main and low-res buffers) */
   function computeView(w, h) {
     var v = {};
-    v.gy = h * (narrow ? 0.93 : 0.88);
-    v.cx = narrow ? w * 0.5 : w * 0.7;
-    v.cy = narrow ? h * 0.66 : h * 0.36;
-    v.f = narrow ? Math.min(w * 0.95, h * 0.85) : Math.min(w * 0.6, h * 1.0);
+    v.gy = h * (narrow ? 0.94 : 0.88);
+    v.cx = narrow ? w * 0.7 : w * 0.7;
+    v.cy = narrow ? h * 0.2 : h * 0.36;
+    v.f = narrow ? Math.min(w * 0.78, h * 0.7) : Math.min(w * 0.6, h * 1.0);
     v.ground = (v.gy - v.cy) * 3.4 / v.f;
     return v;
   }
@@ -72,7 +77,7 @@
   function resize() {
     var r = hero.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     narrow = r.width < 760;
-    W = Math.max(8, Math.round(r.width * dpr)); H = Math.max(8, Math.round(r.height * dpr));
+    dprK = dpr; W = Math.max(8, Math.round(r.width * dpr)); H = Math.max(8, Math.round(r.height * dpr));
     cv.width = W; cv.height = H;
     stars = [];
     for (var i = 0; i < 120; i++) stars.push({ x: Math.random(), y: Math.random() * 0.85, z: rnd(0.3, 1), p: Math.random() * 6 });
@@ -82,7 +87,7 @@
   function step(dt) {
     view = computeView(W, H);   // keep ground height current for physics
     T += dt; ufo.t += dt; var t = ufo.t;
-    ufo.x = Math.sin(t * 0.55) * (narrow ? 0.7 : 1.0);
+    ufo.x = Math.sin(t * 0.55) * (narrow ? 0.55 : 1.0);
     ufo.z = 3.4 + 0.75 * Math.sin(t * 0.55 + 1.4);
     ufo.y = -0.05 + 0.07 * Math.sin(t * 1.7);
     ufo.vx = Math.cos(t * 0.55);
@@ -108,8 +113,10 @@
   function renderScene(g, w, h, opts) {
     view = computeView(w, h);
     var S = narrow ? 0.46 : 0.52, i, ng = opts && opts.nextgen, flat = opts && opts.flat;
+    var ufoOnly = opts && opts.layer === 'ufo';
     g.clearRect(0, 0, w, h);
 
+    if (!ufoOnly) {
     if (ng) { /* a soft nebula glow behind everything */
       var bg = g.createRadialGradient(view.cx, view.cy, 0, view.cx, view.cy, Math.max(w, h) * 0.7);
       bg.addColorStop(0, 'rgba(70,110,220,0.28)'); bg.addColorStop(0.5, 'rgba(40,30,90,0.14)'); bg.addColorStop(1, 'rgba(0,0,0,0)');
@@ -126,6 +133,7 @@
     gr.addColorStop(0, '#16224d'); gr.addColorStop(1, '#070b22');
     g.fillStyle = gr; g.fillRect(0, view.gy, w, h - view.gy);
     g.fillStyle = 'rgba(140,170,255,0.35)'; g.fillRect(0, view.gy, w, 1);
+    }
 
     var gpt = proj(ufo.x, view.ground, ufo.z), sr = view.f * S * 1.05 / ufo.z;
 
@@ -138,8 +146,8 @@
       g.lineTo(gpt[0] + halfBot, gpt[1]); g.lineTo(gpt[0] - halfBot, gpt[1]); g.closePath(); g.fill();
     }
 
-    g.save(); g.translate(gpt[0], gpt[1]); g.scale(1, 0.18);
-    g.fillStyle = ng ? 'rgba(10,20,60,0.5)' : 'rgba(0,0,0,0.4)'; g.beginPath(); g.arc(0, 0, sr, 0, 6.283); g.fill(); g.restore();
+    if (!ufoOnly) { g.save(); g.translate(gpt[0], gpt[1]); g.scale(1, 0.18);
+    g.fillStyle = ng ? 'rgba(10,20,60,0.5)' : 'rgba(0,0,0,0.4)'; g.beginPath(); g.arc(0, 0, sr, 0, 6.283); g.fill(); g.restore(); }
 
     var pitch = 0.42, yaw = ufo.yaw, roll = ufo.roll, list = [];
     for (i = 0; i < mesh.length; i++) {
@@ -189,28 +197,77 @@
     });
   }
 
-  function posterize(c, w, h, levels) {
-    if (!levels) return;
-    try {
-      var img = c.getImageData(0, 0, w, h), d = img.data, stepv = 255 / (levels - 1), i;
-      for (i = 0; i < d.length; i += 4) {
-        d[i] = Math.round(d[i] / stepv) * stepv;
-        d[i + 1] = Math.round(d[i + 1] / stepv) * stepv;
-        d[i + 2] = Math.round(d[i + 2] / stepv) * stepv;
+  /* pixel-art background: hard 1px stars, a flat ground with a scrolling retro grid, a dithered shadow */
+  function drawPixelBg(g, w, h, m) {
+    g.clearRect(0, 0, w, h);
+    view = computeView(w, h);
+    var gy = Math.round(view.gy), i, n = Math.min(stars.length, m.stars);
+    for (i = 0; i < n; i++) {
+      var s = stars[i], x = Math.floor(((s.x - T * 0.004 * s.z) % 1 + 1) % 1 * w), y = Math.floor(s.y * h);
+      if (y >= gy - 1) continue;
+      if (Math.sin(T * 2 + s.p) < -0.7) continue;                       /* blink */
+      g.fillStyle = rgb(s.z > 0.8 ? PAL[5] : s.z > 0.55 ? PAL[3] : PAL[2]);
+      g.fillRect(x, y, 1, 1);
+      if (s.z > 0.93) { g.fillRect(x - 1, y, 1, 1); g.fillRect(x + 1, y, 1, 1); g.fillRect(x, y - 1, 1, 1); g.fillRect(x, y + 1, 1, 1); }
+    }
+    g.fillStyle = rgb(PAL[15]); g.fillRect(0, gy, w, h - gy);
+    g.fillStyle = rgb(PAL[3]); g.fillRect(0, gy, w, 1);
+    var gh = h - gy, rows = m.pal ? 5 : 8, k;
+    g.fillStyle = rgb(PAL[2]);
+    for (k = 0; k < rows; k++) {                                        /* horizontal lines rush toward you */
+      var u = (k + (T * 0.5) % 1) / rows; g.fillRect(0, gy + Math.round(gh * u * u) + 1, w, 1);
+    }
+    var gpt = proj(ufo.x, view.ground, ufo.z), sr = view.f * (narrow ? 0.46 : 0.52) * 1.05 / ufo.z, ry = sr * 0.18;
+    g.fillStyle = rgb(PAL[0]);
+    for (var py = Math.floor(gpt[1] - ry); py <= gpt[1] + ry; py++) for (var px = Math.floor(gpt[0] - sr); px <= gpt[0] + sr; px++) {
+      var ex = (px - gpt[0]) / sr, ey = (py - gpt[1]) / ry;
+      if (ex * ex + ey * ey <= 1 && ((px + py) & 1) === 0) g.fillRect(px, py, 1, 1);
+    }
+  }
+
+  function nearest(r, g, b) {
+    var best = 0, bd = 1e9;
+    for (var i = 0; i < PAL.length; i++) {
+      var dr = r - PAL[i][0], dg = g - PAL[i][1], db = b - PAL[i][2], d = dr * dr + dg * dg + db * db;
+      if (d < bd) { bd = d; best = i; }
+    }
+    return PAL[best];
+  }
+
+  /* make the saucer layer proper pixel art: hard edges, limited colours, optional outline */
+  function crisp(c, w, h, m) {
+    var img = c.getImageData(0, 0, w, h), d = img.data, i, o, x, y;
+    var lv = m.levels ? 255 / (m.levels - 1) : 0;
+    for (i = 0; i < d.length; i += 4) {
+      if (d[i + 3] < 110) { d[i + 3] = 0; continue; }
+      d[i + 3] = 255;
+      if (m.pal) { o = nearest(d[i], d[i + 1], d[i + 2]); d[i] = o[0]; d[i + 1] = o[1]; d[i + 2] = o[2]; }
+      else if (lv) { d[i] = Math.round(d[i] / lv) * lv; d[i + 1] = Math.round(d[i + 1] / lv) * lv; d[i + 2] = Math.round(d[i + 2] / lv) * lv; }
+    }
+    if (m.outline) {
+      var src = new Uint8ClampedArray(d), ol = PAL[11];
+      for (y = 0; y < h; y++) for (x = 0; x < w; x++) {
+        i = (y * w + x) * 4;
+        if (src[i + 3]) continue;
+        if ((x > 0 && src[i - 1]) || (x < w - 1 && src[i + 7]) || (y > 0 && src[i - w * 4 + 3]) || (y < h - 1 && src[i + w * 4 + 3])) {
+          d[i] = ol[0]; d[i + 1] = ol[1]; d[i + 2] = ol[2]; d[i + 3] = 255;
+        }
       }
-      c.putImageData(img, 0, 0);
-    } catch (e) {}
+    }
+    c.putImageData(img, 0, 0);
   }
 
   function frame() {
     var m = MODES[mode];
-    if (m.bufH) {                                  /* pixel-art: render small, scale up hard */
-      var ph = Math.max(10, Math.min(m.bufH, H)), pw = Math.max(16, Math.round(W * ph / H));
-      if (oc.width !== pw || oc.height !== ph) { oc.width = pw; oc.height = ph; }
-      renderScene(octx, pw, ph, { flat: m.flat });
-      posterize(octx, pw, ph, m.poster);
+    if (m.px) {                                    /* pixel-art: render small, scale up hard */
+      var sc = Math.max(2, Math.round(m.px * dprK)), pw = Math.ceil(W / sc), ph = Math.ceil(H / sc);
+      if (oc.width !== pw || oc.height !== ph) { oc.width = pw; oc.height = ph; uc.width = pw; uc.height = ph; }
+      drawPixelBg(octx, pw, ph, m);
+      renderScene(uctx, pw, ph, { flat: m.flat, layer: 'ufo' });
+      crisp(uctx, pw, ph, m);
+      octx.drawImage(uc, 0, 0);
       ctx.clearRect(0, 0, W, H); ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(oc, 0, 0, pw, ph, 0, 0, W, H);
+      ctx.drawImage(oc, 0, 0, pw, ph, 0, 0, pw * sc, ph * sc);
     } else {
       renderScene(ctx, W, H, { nextgen: m.nextgen });
       if (m.nextgen) {                             /* bloom: blur a bright copy back over */
@@ -254,7 +311,9 @@
   })();
 
   resize();
+  step(0.016);   /* the saucer needs a position before the very first frame */
   if (!reduce) { frame(); run(); } else { frame(); }
+  window.addEventListener('load', function () { resize(); step(0); frame(); });   /* layout settles after fonts and images */
   if (window.ResizeObserver) new ResizeObserver(function () { resize(); if (reduce) frame(); }).observe(hero);
   if (window.IntersectionObserver) new IntersectionObserver(function (es) { visible = es[es.length - 1].isIntersecting; if (visible) run(); }).observe(hero);
   document.addEventListener('visibilitychange', run);
