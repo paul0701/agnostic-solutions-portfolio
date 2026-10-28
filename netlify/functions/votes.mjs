@@ -24,7 +24,9 @@ const json = (data, status = 200) =>
 const validNs = (ns) => ns === 'lab' || ROUND.test(ns || '');
 
 export default async (req, context) => {
-  const store = getStore('portfolio-votes');
+  // Strong consistency so a just-cast vote shows on the next read and the
+  // one-vote-per-person check can't be raced during the propagation window.
+  const store = getStore({ name: 'portfolio-votes', consistency: 'strong' });
 
   if (req.method === 'GET') {
     const ns = new URL(req.url).searchParams.get('ns');
