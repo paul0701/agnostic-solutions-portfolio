@@ -51,6 +51,41 @@
   <div class="tools"><button class="replay" id="penClear" type="button" hidden>Clear</button></div>
 </header>
 
+<section class="section section--map" id="route" aria-labelledby="road-h">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="h2" id="road-h">It all starts with a conversation</h2>
+      <p class="lead muted">From your problem to something that does the job. Follow the footprints.</p>
+    </div>
+    <div class="map" id="map" data-step="0">
+      <svg class="map__svg map__svg--wide" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
+        <g class="doodles">
+          <path d="M30 330l30-26 30 26v38H30z M50 368v-20h20v20 M26 332l34-30 34 30"/>
+          <path d="M20 120q30-60 60 0q30-60 60 0 M30 120l8-14 M50 118l8-16 M70 120l8-12 M100 120l8-14 M120 118l8-16"/>
+          <path d="M160 70q40-70 80 0 M170 66l8-12 M190 60l8-14 M210 62l8-12 M228 66l8-10"/>
+          <g class="tree"><path d="M500 210v26 M500 186l-14 28h28z M500 168l-12 22h24z"/></g>
+          <g class="tree"><path d="M538 226v22 M538 206l-12 24h24z M538 190l-10 18h20z"/></g>
+          <g class="tree"><path d="M330 150v22 M330 130l-12 24h24z M330 114l-10 18h20z"/></g>
+          <g class="tree"><path d="M366 166v20 M366 146l-11 22h22z M366 132l-9 16h18z"/></g>
+          <path d="M700 380q30-26 70-6q40 22 80-4q-20 44-80 44q-50 0-70-34z M718 392q22 8 40 0 M780 396q18 6 34-2"/>
+          <path d="M930 400a30 30 0 1 0 0.1 0 M930 372v12 M930 428v-12 M902 400h12 M958 400h-12 M930 390l6 10-6 10-6-10z"/>
+          <text x="923" y="360">N</text>
+        </g>
+        <path class="trail" id="trailWide" d="M90 420 C190 440 250 300 340 300 C430 300 460 420 560 410 C660 400 680 270 640 200 C600 130 700 70 800 100 C860 118 890 110 910 90"/>
+        <g class="prints"></g>
+      </svg>
+      <svg class="map__svg map__svg--tall" viewBox="0 0 360 660" preserveAspectRatio="none" aria-hidden="true">
+        <g class="doodles"><path d="M8 215q12-26 24 0q12-26 24 0 M14 213l4-8 M28 210l4-9"/><g class="tree"><path d="M20 445v14 M20 430l-8 16h16z M20 418l-7 12h14z"/></g></g>
+        <path class="trail" id="trailTall" d="M50 40 C50 100 96 100 96 160 S50 220 50 280 S96 340 96 400 S50 460 50 520 S96 580 96 625"/>
+        <g class="prints"></g>
+      </svg>
+      <ol class="mstops"><li class="mstop" data-i="0"><button type="button" class="mstop__dot" aria-label="Go to step: Your problem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 20v-6h4v6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><span class="mstop__label"><b>Your problem</b><span>Where it starts.</span></span></li><li class="mstop" data-i="1"><button type="button" class="mstop__dot" aria-label="Go to step: Talk">1</button><span class="mstop__label"><b>Talk</b><span>Tell me what it is for, not just what you want.</span></span></li><li class="mstop" data-i="2"><button type="button" class="mstop__dot" aria-label="Go to step: Sketch">2</button><span class="mstop__label"><b>Sketch</b><span>I put together something rough you can react to.</span></span></li><li class="mstop" data-i="3"><button type="button" class="mstop__dot" aria-label="Go to step: Try it">3</button><span class="mstop__label"><b>Try it</b><span>You use it and tell me what feels off.</span></span></li><li class="mstop" data-i="4"><button type="button" class="mstop__dot" aria-label="Go to step: Tune">4</button><span class="mstop__label"><b>Tune</b><span>We adjust until it does the job you need.</span></span></li><li class="mstop" data-i="5"><button type="button" class="mstop__dot" aria-label="Go to step: Live"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 4h12l-3 4 3 4H6z" fill="currentColor"/></svg></button><span class="mstop__label"><a href="https://indepthinclusion.co.uk/" target="_blank" rel="noopener"><b>Live</b><span>See one: iNDepth Inclusion</span></a></span></li></ol>
+      <span class="here" aria-hidden="true">you are here</span>
+    </div>
+    <div class="map__controls"><button type="button" class="btn btn--primary" id="nextStep">Next step</button><button type="button" class="btn" id="resetSteps" hidden>Walk it again</button></div>
+    <p class="road__note">That is how iNDepth Inclusion went: a few style examples, three rounds of feedback and a live site.</p>
+  </div>
+</section>
 <section class="section" aria-labelledby="start-h">
   <div class="wrap">
     <div class="section__head">
@@ -95,31 +130,14 @@
   </div>
 </section>
 
-<section class="section section--tint" aria-labelledby="how-h">
-  <div class="wrap split">
-    <h2 class="h2" id="how-h">How I work</h2>
-    <div class="prose">
-      <p>I find a problem, I understand it, and I build something to fix it. Before any of that, I check that the problem is the one that was described. Often there is a simpler way of doing the job, and sometimes it is one the people doing it have stopped seeing because it has always been done that way.</p>
-      <p>Nobody is doing it wrong. The way something is done usually made sense when it started. The only question is whether there is a better way now.</p>
-    </div>
-  </div>
-</section>
-
 <section class="section" aria-labelledby="sites-h">
   <div class="wrap">
-    <div class="section__head"><h2 class="h2" id="sites-h">Websites I have built</h2></div>
+    <div class="section__head"><h2 class="h2" id="sites-h">A site I&rsquo;ve built</h2></div>
     <div class="entries">
       <article class="entry">
         <div class="entry__body">
-          <div class="entry__title"><h3 class="h3">One More Light</h3><span class="tag">Clothing shop</span></div>
-          <p>An online shop for comfortable, neurodiverse-friendly clothing, with designs inspired by the music that gets people through their darkest times.</p>
-        </div>
-        <div class="entry__aside"><a class="btn btn--small" href="https://onemorelightuk.teemill.com/" target="_blank" rel="noopener">Visit the shop</a></div>
-      </article>
-      <article class="entry">
-        <div class="entry__body">
           <div class="entry__title"><h3 class="h3">iNDepth Inclusion</h3><span class="tag">Client site</span></div>
-          <p>A website for a neuroinclusion consultancy. Direct, clear and professional, built so the work can speak for itself.</p>
+          <p>A website for a neuroinclusion consultancy as she moved into consultancy work. We went from a few colour and style examples to a live site in three rounds of feedback, with a short guide for setting up her own domain.</p>
         </div>
         <div class="entry__aside"><a class="btn btn--small" href="https://indepthinclusion.co.uk/" target="_blank" rel="noopener">Visit the site</a></div>
       </article>
@@ -148,6 +166,7 @@
   </div>
 </footer>
 <script src="config.js"></script>
+<script src="home-map.js" defer></script>
 <script src="hero-ink.js" defer></script>
 <script src="site.js" defer></script>
 </body>
