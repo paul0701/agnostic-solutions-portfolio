@@ -112,9 +112,9 @@
     });
   }
 
-  /* ---- Lab form (Netlify Forms) ---- */
-  var form = document.querySelector('form[data-netlify]');
-  if (form) {
+  /* ---- Netlify Forms (the Lab form and "Made for you") ----
+     Netlify strips data-netlify from the deployed HTML, so match on the form names too. */
+  [].slice.call(document.querySelectorAll('form[data-netlify], form[name="lab-feedback"], form[name="made-for-you"]')).forEach(function (form) {
     var fnote = form.querySelector('.form-note');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -124,7 +124,7 @@
         .then(function (r) { if (!r.ok) throw new Error('bad'); form.reset(); fnote.setAttribute('data-state', 'ok'); fnote.textContent = 'Sent. Thank you, I will read it.'; })
         .catch(function () { fnote.setAttribute('data-state', 'error'); fnote.textContent = 'That did not send. You can email ' + (PJ.email || 'me') + ' instead.'; });
     });
-  }
+  });
 
   /* ---- Email: copy the address instead of opening a mail app (mailto: jumps straight into Outlook) ---- */
   [].slice.call(document.querySelectorAll('[data-copy-email]')).forEach(function (b) {
