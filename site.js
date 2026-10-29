@@ -126,6 +126,17 @@
     });
   }
 
+  /* ---- Email: copy the address instead of opening a mail app (mailto: jumps straight into Outlook) ---- */
+  [].slice.call(document.querySelectorAll('[data-copy-email]')).forEach(function (b) {
+    var label = b.textContent;
+    b.addEventListener('click', function () {
+      var done = function (t) { b.textContent = t; setTimeout(function () { b.textContent = label; }, 2000); };
+      var addr = PJ.email || '';
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(addr).then(function () { done('Copied'); }, function () { done(addr); });
+      else done(addr);
+    });
+  });
+
   /* ---- The Socratic demo: a question, then a question back ---- */
   var demo = document.querySelector('[data-demo]');
   if (demo) {
