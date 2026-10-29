@@ -35,6 +35,7 @@
   <symbol id="i-peak" viewBox="0 0 48 48"><path d="M4 41L19 13l9 15 5-8 11 21z"/><path d="M19 13V6l7 2-7 3"/></symbol>
   <symbol id="i-bike" viewBox="0 0 48 48"><circle cx="12" cy="33" r="6"/><circle cx="37" cy="33" r="6"/><path d="M12 33l8-13h11l6 13M20 20l5 13 6-13M17 14h6"/><rect x="26" y="8" width="9" height="5" rx="2"/></symbol>
   <symbol id="i-hotel" viewBox="0 0 48 48"><rect x="12" y="6" width="24" height="36"/><path d="M18 14h4M26 14h4M18 22h4M26 22h4M18 30h4M26 30h4M21 42v-6h6v6"/></symbol>
+  <symbol id="i-arcade" viewBox="0 0 24 24"><path fill="currentColor" d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18z"/><rect x="7.4" y="3.4" width="9.2" height="2.6" rx=".6" fill="#ffb020"/><rect x="8" y="7.4" width="8" height="5.6" rx=".8" fill="#0a0e1c"/><rect x="9.3" y="8.7" width="5.4" height="3" rx=".4" fill="#4fd67a"/><path d="M5 14.2h14l-1.2 3.2H6.2z" fill="#9aa3c7"/><circle cx="10" cy="15.9" r="1.1" fill="#ff4757"/><circle cx="14.3" cy="15.9" r=".95" fill="#ffb020"/><rect x="9.2" y="19" width="5.6" height="2.2" rx=".5" fill="#0a0e1c"/></symbol>
   <symbol id="i-siren" viewBox="0 0 48 48"><path d="M12 38h24M15 38V26a9 9 0 0118 0v12M24 10V5M9 17l-4-3M39 17l4-3M24 20v8"/></symbol>
   <symbol id="i-street" viewBox="0 0 48 48"><path d="M20 44V12a8 8 0 0116 0M16 44h8M36 12v6M31 18h10l-2 7h-6z"/><path d="M6 44h36"/></symbol>
   <symbol id="i-torch" viewBox="0 0 48 48"><path d="M8 34l14-6 6 6-8 10z"/><path d="M30 20l12-6M32 27l12 2M26 15l5-11"/></symbol>
@@ -52,7 +53,7 @@
     <div class="hero__text">
       <h1 class="display">Games</h1>
       <p class="lead">Eleven games that run in your browser, work on a phone and cost nothing. Every three months a new one ships, and you vote on which.</p>
-      <p class="lead"><strong>One login for the nine arcade games.</strong> Rum to Riches and Guess the Opening keep their own saves, so they sit apart further down.</p>
+      <p class="lead"><strong>One login. Nine games.</strong> <span class="legend">Look for <span class="arc arc--inline" role="img" aria-label="the arcade badge"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arcade"/></svg></span> on a game&rsquo;s tile.</span></p>
       <div class="btn-row">
         <a class="btn btn--primary" href="#play">Play now</a>
         <a class="btn" href="#next">Vote on the next one</a>
@@ -73,108 +74,99 @@
 <section class="section" id="play" aria-labelledby="play-h">
   <div class="wrap">
     <div class="section__head">
-      <h2 class="h2" id="play-h">The arcade: one login</h2>
-      <p class="lead muted">Nine games, one arcade account. Make it once &mdash; a name and a 6-digit PIN &mdash; and your best scores follow you from game to game. It covers these nine only. Open a link and you&rsquo;re playing: no ads, no installs, no email needed.</p>
+      <h2 class="h2" id="play-h">The Arcade: One login. Nine games.</h2>
+      <p class="lead muted">Nine games, one arcade account. Make it once &mdash; a name and a 6-digit PIN &mdash; and your best scores follow you from game to game. Open a link and you&rsquo;re playing: no ads, no installs, no email needed.</p>
     </div>
     <div class="tiles">
       <article class="tile">
-        <div class="tile__art" style="--tone:#2a0e12;--glyph:#ff6b4a" data-preview="devil-run"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-torch"/></svg><img class="tile__shot" src="devil-run.jpg" alt="Screenshot of Devil Run" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__art" style="--tone:#2a0e12;--glyph:#ff6b4a" data-preview="devil-run"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-torch"/></svg><img class="tile__shot" src="devil-run.jpg" alt="Screenshot of Devil Run" loading="lazy" width="1280" height="720" onerror="this.remove()"><span class="arc" title="Part of the arcade: one login" role="img" aria-label="Part of the arcade: one login"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arcade"/></svg></span></div>
         <div class="tile__body">
           <div><h3 class="h3">Devil Run</h3><p class="tag">Top-down racer</p></div>
           <p>A quick top-down racer you can jump into in seconds. Line up against a grid of other drivers, hold your line through the bends and nudge your way to the front, because first across the line takes it. One race rolls straight into the next.</p>
           <div class="tile__foot">
             <a class="btn btn--primary" href="https://devil-run.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Devil Run</a>
-            <span class="small muted">Arcade login &middot; your scores follow you</span>
           </div>
         </div>
       </article>
       <article class="tile">
-        <div class="tile__art" style="--tone:#1c1f26;--glyph:#e05a5a" data-preview="ninja-dojo"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-shuriken"/></svg><img class="tile__shot" src="ninja-dojo.jpg" alt="Screenshot of Ninja Dojo" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__art" style="--tone:#1c1f26;--glyph:#e05a5a" data-preview="ninja-dojo"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-shuriken"/></svg><img class="tile__shot" src="ninja-dojo.jpg" alt="Screenshot of Ninja Dojo" loading="lazy" width="1280" height="720" onerror="this.remove()"><span class="arc" title="Part of the arcade: one login" role="img" aria-label="Part of the arcade: one login"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arcade"/></svg></span></div>
         <div class="tile__body">
           <div><h3 class="h3">Ninja Dojo</h3><p class="tag">Arena brawler</p></div>
           <p>A ninja arena brawler. Swipe to strike and fight off the waves coming at you across the dojo floor, watched from a corner camera as if you were looking at the dojo on CCTV.</p>
           <div class="tile__foot">
             <a class="btn btn--primary" href="https://ninja-dojo.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Ninja Dojo</a>
-            <span class="small muted">Arcade login &middot; your scores follow you</span>
           </div>
         </div>
       </article>
       <article class="tile">
-        <div class="tile__art" style="--tone:#1f2a5c;--glyph:#f4d77a" data-preview="pawn-force"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-pawn"/></svg><img class="tile__shot" src="pawn-force.jpg" alt="Screenshot of Pawn Force" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__art" style="--tone:#1f2a5c;--glyph:#f4d77a" data-preview="pawn-force"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-pawn"/></svg><img class="tile__shot" src="pawn-force.jpg" alt="Screenshot of Pawn Force" loading="lazy" width="1280" height="720" onerror="this.remove()"><span class="arc" title="Part of the arcade: one login" role="img" aria-label="Part of the arcade: one login"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arcade"/></svg></span></div>
         <div class="tile__body">
           <div><h3 class="h3">Pawn Force</h3><p class="tag">Chess endless runner</p></div>
           <p>A chess endless runner. You are a pawn on a three lane board, and the pieces coming at you move like the real thing: rooks charge, bishops slide along the diagonals, knights hop in an L. Your score is your chess rating.</p>
           <div class="tile__foot">
             <a class="btn btn--primary" href="https://pawn-force.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Pawn Force</a>
-            <span class="small muted">Arcade login &middot; your scores follow you</span>
             
           </div>
         </div>
       </article>
       <article class="tile">
-        <div class="tile__art" style="--tone:#12343a;--glyph:#ffd166" data-preview="blockchain-breakout"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-coin"/></svg><img class="tile__shot" src="blockchain-breakout.jpg" alt="Screenshot of Blockchain Breakout" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__art" style="--tone:#12343a;--glyph:#ffd166" data-preview="blockchain-breakout"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-coin"/></svg><img class="tile__shot" src="blockchain-breakout.jpg" alt="Screenshot of Blockchain Breakout" loading="lazy" width="1280" height="720" onerror="this.remove()"><span class="arc" title="Part of the arcade: one login" role="img" aria-label="Part of the arcade: one login"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arcade"/></svg></span></div>
         <div class="tile__body">
           <div><h3 class="h3">Blockchain Breakout</h3><p class="tag">Endless runner</p></div>
           <p>You are a coin escaping a blockchain. Run, dodge and collect gems while set pieces hit mid run: a scanner drone and a collapsing floor (the Rug Pull), a wrong chain that halves your score (the Halving) and screen interference with phantom obstacles (the Hack).</p>
           <div class="tile__foot">
             <a class="btn btn--primary" href="https://blockchain-breakout.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Blockchain Breakout</a>
-            <span class="small muted">Arcade login &middot; your scores follow you</span>
           </div>
         </div>
       </article>
       <article class="tile">
-        <div class="tile__art" style="--tone:#3a1220;--glyph:#ff9a6b" data-preview="slash-and-dash"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-blade"/></svg><img class="tile__shot" src="slash-and-dash.jpg" alt="Screenshot of Slash &amp; Dash" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__art" style="--tone:#3a1220;--glyph:#ff9a6b" data-preview="slash-and-dash"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-blade"/></svg><img class="tile__shot" src="slash-and-dash.jpg" alt="Screenshot of Slash &amp; Dash" loading="lazy" width="1280" height="720" onerror="this.remove()"><span class="arc" title="Part of the arcade: one login" role="img" aria-label="Part of the arcade: one login"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arcade"/></svg></span></div>
         <div class="tile__body">
           <div><h3 class="h3">Slash &amp; Dash</h3><p class="tag">Arcade runner</p></div>
           <p>A side scrolling arcade runner with a Halloween theme and a Christmas theme you can switch between mid run. Dodge the cops, grab power-ups and build up to the blade boost. Install it to your home screen and it plays offline.</p>
           <div class="tile__foot">
             <a class="btn btn--primary" href="https://slash-and-dash.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Slash &amp; Dash</a>
-            <span class="small muted">Arcade login &middot; your scores follow you</span>
           </div>
         </div>
       </article>
       <article class="tile">
-        <div class="tile__art" style="--tone:#17334a;--glyph:#cfe8ff" data-preview="vertical-limit"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-peak"/></svg><img class="tile__shot" src="vertical-limit.jpg" alt="Screenshot of Vertical Limit" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__art" style="--tone:#17334a;--glyph:#cfe8ff" data-preview="vertical-limit"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-peak"/></svg><img class="tile__shot" src="vertical-limit.jpg" alt="Screenshot of Vertical Limit" loading="lazy" width="1280" height="720" onerror="this.remove()"><span class="arc" title="Part of the arcade: one login" role="img" aria-label="Part of the arcade: one login"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arcade"/></svg></span></div>
         <div class="tile__body">
           <div><h3 class="h3">Vertical Limit</h3><p class="tag">Tap to climb</p></div>
           <p>Tap the next grip and climb while rocks fall from above. At every base camp you can bank your points and stop, or push on and risk losing the lot.</p>
           <div class="tile__foot">
             <a class="btn btn--primary" href="https://vertical-limit.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Vertical Limit</a>
-            <span class="small muted">Arcade login &middot; your scores follow you</span>
           </div>
         </div>
       </article>
       <article class="tile">
-        <div class="tile__art" style="--tone:#2a3a1c;--glyph:#ffe28a" data-preview="courier-run"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-bike"/></svg><img class="tile__shot" src="courier-run.jpg" alt="Screenshot of Courier Run" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__art" style="--tone:#2a3a1c;--glyph:#ffe28a" data-preview="courier-run"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-bike"/></svg><img class="tile__shot" src="courier-run.jpg" alt="Screenshot of Courier Run" loading="lazy" width="1280" height="720" onerror="this.remove()"><span class="arc" title="Part of the arcade: one login" role="img" aria-label="Part of the arcade: one login"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arcade"/></svg></span></div>
         <div class="tile__body">
           <div><h3 class="h3">Courier Run</h3><p class="tag">Arcade runner</p></div>
           <p>Be the paperboy. Jump the dogs tearing across the road and land your papers on the doorsteps at the same time. Miss five deliveries and the round is over, so the trick is doing both at once.</p>
           <div class="tile__foot">
             <a class="btn btn--primary" href="https://courier-run.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Courier Run</a>
-            <span class="small muted">Arcade login &middot; your scores follow you</span>
 
           </div>
         </div>
       </article>
       <article class="tile">
-        <div class="tile__art" style="--tone:#0f2c4a;--glyph:#7fc4ff"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-globe"/></svg><img class="tile__shot" src="higher-or-lower.jpg" alt="Screenshot of Higher or Lower" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__art" style="--tone:#0f2c4a;--glyph:#7fc4ff"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-globe"/></svg><img class="tile__shot" src="higher-or-lower.jpg" alt="Screenshot of Higher or Lower" loading="lazy" width="1280" height="720" onerror="this.remove()"><span class="arc" title="Part of the arcade: one login" role="img" aria-label="Part of the arcade: one login"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arcade"/></svg></span></div>
         <div class="tile__body">
           <div><h3 class="h3">Higher or Lower</h3><p class="tag">Population guess</p></div>
           <p>A country&rsquo;s flag appears with its population, and you call whether the next one is higher or lower. Keep the streak going. Play one region at a time, or go Global for the most points.</p>
           <div class="tile__foot">
             <a class="btn btn--primary" href="https://higher.lower.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Higher or Lower</a>
-            <span class="small muted">Arcade login &middot; your scores follow you</span>
           </div>
         </div>
       </article>
       <article class="tile">
-        <div class="tile__art" style="--tone:#17284a;--glyph:#ffc96b"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-flag"/></svg><img class="tile__shot" src="flag-frenzy.jpg" alt="Screenshot of Flag Frenzy" loading="lazy" width="1280" height="720" onerror="this.remove()"></div>
+        <div class="tile__art" style="--tone:#17284a;--glyph:#ffc96b"><svg aria-hidden="true" viewBox="0 0 48 48"><use href="#i-flag"/></svg><img class="tile__shot" src="flag-frenzy.jpg" alt="Screenshot of Flag Frenzy" loading="lazy" width="1280" height="720" onerror="this.remove()"><span class="arc" title="Part of the arcade: one login" role="img" aria-label="Part of the arcade: one login"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arcade"/></svg></span></div>
         <div class="tile__body">
           <div><h3 class="h3">Flag Frenzy</h3><p class="tag">Memory match</p></div>
           <p>Flip the cards and match the pairs of country flags. Fewer moves and a quicker time score higher. Pick a continent to learn its flags, or go Global for the real test.</p>
           <div class="tile__foot">
             <a class="btn btn--primary" href="https://flag.frenzy.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Flag Frenzy</a>
-            <span class="small muted">Arcade login &middot; your scores follow you</span>
           </div>
         </div>
       </article>
@@ -185,8 +177,8 @@
 <section class="section" id="standalone" aria-labelledby="standalone-h">
   <div class="wrap">
     <div class="section__head">
-      <h2 class="h2" id="standalone-h">Separate saves, no arcade login</h2>
-      <p class="lead muted">Two games that are not part of the arcade login and keep their own progress &mdash; a daily chess puzzle, and a slow-burn pirate trader that plays out in real time.</p>
+      <h2 class="h2" id="standalone-h">The Long Game</h2>
+      <p class="lead muted">A daily chess puzzle and a pirate trader that sails in real time.</p>
     </div>
     <div class="tiles">
       <article class="tile">
