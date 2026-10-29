@@ -4,5 +4,5 @@ window.PJ = {
   patreon: 'https://www.patreon.com/c/AgnosticSolutions',
   /* Where the vote counter lives (netlify/functions/votes.mjs). */
   voteApi: '/api/votes',
-  email: 'paul@agnostic-solutions.co.uk'
+  email: 'paul@agnosticsolutions.co.uk'
 };
