@@ -1,5 +1,5 @@
-/* Shared behaviour: the mobile menu, bar fills, the vote, the "this would help" buttons,
-   the Lab form and the Patreon line. Each part only runs on the pages that have it. */
+/* Shared behaviour: the mobile menu, the vote, the situation form, the email copy buttons and the
+   game previews. Each part only runs on the pages that have it. */
 (function () {
   'use strict';
   var PJ = window.PJ || {};
@@ -89,32 +89,9 @@
     });
   }
 
-  /* ---- "This would help my team" ---- */
-  var helps = [].slice.call(document.querySelectorAll('[data-helpful]'));
-  if (helps.length) {
-    var hc = null;
-    var paint = function (el) {
-      var id = el.getAttribute('data-helpful'), n = hc && hc[id] || 0, c = el.querySelector('.helpful__count'), b = el.querySelector('.btn');
-      var done = store('pj_help_' + id);
-      if (b) { b.disabled = !!done; b.textContent = done ? 'Noted, thank you' : 'This would help my team'; }
-      if (c) c.textContent = hc ? (n ? n + (n === 1 ? ' person says' : ' people say') + ' it would help' : 'Nobody has said yet') : '';
-    };
-    helps.forEach(paint);
-    api('GET', 'lab').then(function (d) { hc = d.counts || {}; helps.forEach(paint); }).catch(function () {});
-    helps.forEach(function (el) {
-      var b = el.querySelector('.btn'), id = el.getAttribute('data-helpful');
-      if (!b) return;
-      b.addEventListener('click', function () {
-        b.disabled = true;
-        api('POST', 'lab', id).then(function (d) { hc = d.counts || {}; store('pj_help_' + id, '1'); paint(el); })
-          .catch(function () { b.disabled = false; });
-      });
-    });
-  }
-
-  /* ---- Netlify Forms (the Lab form and "Made for you") ----
+  /* ---- Netlify Forms (the "Describe your situation" form) ----
      Netlify strips data-netlify from the deployed HTML, so match on the form names too. */
-  [].slice.call(document.querySelectorAll('form[data-netlify], form[name="lab-feedback"], form[name="made-for-you"]')).forEach(function (form) {
+  [].slice.call(document.querySelectorAll('form[data-netlify], form[name="situation"]')).forEach(function (form) {
     var fnote = form.querySelector('.form-note');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -136,24 +113,6 @@
       else done(addr);
     });
   });
-
-  /* ---- The Socratic demo: a question, then a question back ---- */
-  var demo = document.querySelector('[data-demo]');
-  if (demo) {
-    var reply = demo.querySelector('.demo__reply'), opts = [].slice.call(demo.querySelectorAll('.opt'));
-    opts.forEach(function (o) {
-      o.addEventListener('click', function () {
-        opts.forEach(function (x) { x.setAttribute('aria-pressed', x === o ? 'true' : 'false'); });
-        var right = o.hasAttribute('data-right');
-        reply.setAttribute('data-state', right ? 'right' : 'ask');
-        reply.innerHTML = '';
-        var s = document.createElement('strong'), t = document.createElement('span');
-        s.textContent = right ? 'That works. Here is why. ' : 'Not quite, but look at this: ';
-        t.textContent = o.getAttribute('data-reply');
-        reply.appendChild(s); reply.appendChild(t);
-      });
-    });
-  }
 
   /* ---- Gameplay previews: a play button appears only where a clip exists ---- */
   var previews = [].slice.call(document.querySelectorAll('[data-preview]'));

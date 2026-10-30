@@ -22,7 +22,7 @@
   <div class="wrap site-nav__inner">
     <a class="brand" href="index.html" aria-label="Paul Jones, Agnostic Solutions, home"><span class="brand__name">Paul Jones</span><span class="brand__co">Agnostic Solutions</span></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks"><span class="nav-toggle__bars" aria-hidden="true"></span>Menu</button>
-    <div class="nav-links" id="navLinks"><a href="games.html">Games</a><a href="socratic-suite.html">Socratic Suite</a><a href="iq-suite.html">IQ Suite</a><a href="lab.html">The Lab</a></div>
+    <div class="nav-links" id="navLinks"><a href="games.html">Games</a><a href="#situation">Contact</a></div>
   </div>
 </nav>
 <main id="main">
@@ -34,7 +34,7 @@
       <p class="lead">I build tools, dashboards, games and websites that work, and I look hard at how something is done before I change it.</p>
       <div class="btn-row">
         <a class="btn btn--primary" href="games.html">See the games</a>
-        <a class="btn" href="lab.html#situation">Describe your situation</a>
+        <a class="btn" href="#situation">Describe your situation</a>
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@
           <div class="screen__bar"><i></i><i></i><i></i><span>about-me.txt</span></div>
           <p class="sr-only">Hi, I&rsquo;m Paul. Somewhere along the way I became the person who gets asked, &ldquo;Can you have a look at this?&rdquo; I turn slow, fiddly jobs into something that just works, and I love a problem that looks impossible at first. Tell me what&rsquo;s bugging you.</p>
           <div class="screen__text" aria-hidden="true"><span class="type__hi" data-type="Hi, I&rsquo;m Paul."></span><span class="type__body" data-type="Somewhere along the way I became the person who gets asked, &ldquo;Can you have a look at this?&rdquo; I turn slow, fiddly jobs into something that just works, and I love a problem that looks impossible at first. Tell me what&rsquo;s bugging you."></span><span class="caret"></span></div>
-          <a class="screen__cta" href="lab.html#situation">Describe your situation</a>
+          <a class="screen__cta" href="#situation">Describe your situation</a>
           <div class="avatar" aria-hidden="true"><svg class="avatar__svg" viewBox="0 0 120 120" aria-hidden="true">
   <rect width="120" height="120" rx="14" fill="#cfd9f5"/>
   <path d="M10 120c2-26 22-38 50-38s48 12 50 38z" fill="#1f2a44"/>
@@ -81,7 +81,7 @@
       <div class="laptop__base"><span class="laptop__pad"></span></div></div>
       <div class="laptop__shadow"></div>
     </div>
-    <p class="about__cta"><a class="btn btn--primary" href="lab.html#situation">Describe your situation</a></p>
+    <p class="about__cta"><a class="btn btn--primary" href="#situation">Describe your situation</a></p>
   </div>
 </section>
 <section class="section section--map" id="route" aria-labelledby="road-h">
@@ -112,81 +112,39 @@
         <path class="trail" id="trailTall" d="M50 40 C50 100 96 100 96 160 S50 220 50 280 S96 340 96 400 S50 460 50 520 S96 580 96 625"/>
         <g class="prints"></g>
       </svg>
-      <ol class="mstops"><li class="mstop" data-i="0"><button type="button" class="mstop__dot" aria-label="Go to step: Your problem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 20v-6h4v6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><span class="mstop__label"><b>Your problem</b><span>Where it starts.</span></span></li><li class="mstop" data-i="1"><button type="button" class="mstop__dot" aria-label="Go to step: Talk">1</button><span class="mstop__label"><b>Talk</b><span>Tell me what it is for, not just what you want.</span></span></li><li class="mstop" data-i="2"><button type="button" class="mstop__dot" aria-label="Go to step: Sketch">2</button><span class="mstop__label"><b>Sketch</b><span>I put together something rough you can react to.</span></span></li><li class="mstop" data-i="3"><button type="button" class="mstop__dot" aria-label="Go to step: Try it">3</button><span class="mstop__label"><b>Try it</b><span>You use it and tell me what feels off.</span></span></li><li class="mstop" data-i="4"><button type="button" class="mstop__dot" aria-label="Go to step: Tune">4</button><span class="mstop__label"><b>Tune</b><span>We adjust until it does the job you need.</span></span></li><li class="mstop" data-i="5"><button type="button" class="mstop__dot" aria-label="Go to step: Live"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 4h12l-3 4 3 4H6z" fill="currentColor"/></svg></button><span class="mstop__label"><a href="https://indepthinclusion.co.uk/" target="_blank" rel="noopener"><b>Live</b><span>See one: iNDepth Inclusion</span></a></span></li></ol>
+      <ol class="mstops"><li class="mstop" data-i="0"><button type="button" class="mstop__dot" aria-label="Go to step: Your problem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 20v-6h4v6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><span class="mstop__label"><b>Your problem</b><span>Where it starts.</span></span></li><li class="mstop" data-i="1"><button type="button" class="mstop__dot" aria-label="Go to step: Talk">1</button><span class="mstop__label"><b>Talk</b><span>Tell me what it is for, not just what you want.</span></span></li><li class="mstop" data-i="2"><button type="button" class="mstop__dot" aria-label="Go to step: Sketch">2</button><span class="mstop__label"><b>Sketch</b><span>I put together something rough you can react to.</span></span></li><li class="mstop" data-i="3"><button type="button" class="mstop__dot" aria-label="Go to step: Try it">3</button><span class="mstop__label"><b>Try it</b><span>You use it and tell me what feels off.</span></span></li><li class="mstop" data-i="4"><button type="button" class="mstop__dot" aria-label="Go to step: Tune">4</button><span class="mstop__label"><b>Tune</b><span>We adjust until it does the job you need.</span></span></li><li class="mstop" data-i="5"><button type="button" class="mstop__dot" aria-label="Go to step: Live"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 4h12l-3 4 3 4H6z" fill="currentColor"/></svg></button><span class="mstop__label"><a href="https://indepthinclusion.co.uk/" target="_blank" rel="noopener"><b>Live</b><span>See it live &rarr;</span></a></span></li></ol>
     </div>
     <div class="map__controls"><button type="button" class="btn btn--primary" id="nextStep">Next step</button><button type="button" class="btn" id="resetSteps" hidden>Walk it again</button></div>
-    <p class="road__note">That is how iNDepth Inclusion went: a few style examples, three rounds of feedback and a live site.</p>
-  </div>
-</section>
-<section class="section" aria-labelledby="start-h">
-  <div class="wrap">
-    <div class="section__head">
-      <h2 class="h2" id="start-h">Where to start</h2>
-      <p class="lead muted">Each piece of work below says what it does and what it shows about how I think.</p>
-    </div>
-    <div class="entries">
-      <article class="entry">
-        <div class="entry__body">
-          <div class="entry__title"><h3 class="h3">Pawn Force</h3><span class="tag">Game</span></div>
-          <p>A chess endless runner. You are a pawn, the pieces chasing you move the way the real ones do, and your score is your chess rating.</p>
-          <p class="muted">What it shows: a finished game that is free to play and live now.</p>
-        </div>
-        <div class="entry__aside">
-          <span class="status">Live now</span>
-          <a class="btn btn--small" href="https://pawn-force.agnosticsolutions.co.uk" target="_blank" rel="noopener">Play Pawn Force</a>
-        </div>
-      </article>
-      <article class="entry">
-        <div class="entry__body">
-          <div class="entry__title"><h3 class="h3">The Ledger</h3><span class="tag">Learning tool</span></div>
-          <p>Free accountancy learning with flashcards and spaced repetition. It asks you a question before it explains, and it exists because the material that was already out there did not do the job.</p>
-          <p class="muted">What it shows: starting from the problem a learner actually has.</p>
-        </div>
-        <div class="entry__aside">
-          <span class="status">Live and growing</span>
-          <a class="btn btn--small" href="https://stalwart-cocada-ff9319.netlify.app" target="_blank" rel="noopener">Open The Ledger</a>
-        </div>
-      </article>
-      <article class="entry">
-        <div class="entry__body">
-          <div class="entry__title"><h3 class="h3">Query triage</h3><span class="tag">Time saver</span></div>
-          <p>A front door for general enquiries. It points the simple ones to the right page or person, hands the rest to a human, and tags every query so you can see what people are really asking.</p>
-          <p class="muted">What it shows: not just answering faster, but finding out what the questions are telling you.</p>
-        </div>
-        <div class="entry__aside">
-          <span class="status status--use">Working demo</span>
-          <a class="btn btn--small" href="lab.html#time-savers">Read the story</a>
-        </div>
-      </article>
+    <div class="finale" id="finale">
+      <a class="browser" href="https://indepthinclusion.co.uk/" target="_blank" rel="noopener" aria-label="Visit iNDepth Inclusion, the live site">
+        <span class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">indepthinclusion.co.uk</span></span>
+        <span class="browser__view" role="img" aria-label="Screenshots of the iNDepth Inclusion website scrolling slowly down the page"></span>
+        <span class="browser__go" aria-hidden="true">Visit the live site &rarr;</span>
+      </a>
+      <div class="finale__text">
+        <p class="finale__kicker">The end of the road</p>
+        <h3 class="h3">iNDepth Inclusion</h3>
+        <p>A website I built for a neuroinclusion consultancy: a few style examples, three rounds of feedback, and a live site.</p>
+        <a class="btn btn--primary" href="https://indepthinclusion.co.uk/" target="_blank" rel="noopener">Visit the live site</a>
+      </div>
     </div>
   </div>
 </section>
-
-<section class="section" aria-labelledby="sites-h">
-  <div class="wrap">
-    <div class="section__head"><h2 class="h2" id="sites-h">A site I&rsquo;ve built</h2></div>
-    <div class="entries">
-      <article class="entry">
-        <div class="entry__body">
-          <div class="entry__title"><h3 class="h3">iNDepth Inclusion</h3><span class="tag">Client site</span></div>
-          <p>A website for a neuroinclusion consultancy as she moved into consultancy work. We went from a few colour and style examples to a live site in three rounds of feedback, with a short guide for setting up her own domain.</p>
-        </div>
-        <div class="entry__aside"><a class="btn btn--small" href="https://indepthinclusion.co.uk/" target="_blank" rel="noopener">Visit the site</a></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="band on-dark" aria-labelledby="talk-h">
-  <div class="wrap band__inner">
+<section class="band on-dark" id="situation" aria-labelledby="talk-h">
+  <div class="wrap band__inner band__inner--form">
     <div>
       <h2 class="h2" id="talk-h">Got a situation that could work better?</h2>
       <p class="lead" style="margin-top:14px">Tell me what is happening and where it gets stuck. No blame, just the situation.</p>
+      <p class="band__alt"><button type="button" class="btn" data-copy-email>Copy my email address</button></p>
     </div>
-    <div class="btn-row">
-      <a class="btn btn--primary" href="lab.html#situation">Describe your situation</a>
-      <button type="button" class="btn" data-copy-email>Copy my email address</button>
-    </div>
+    <form class="form form--dark" name="situation" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="situation">
+      <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="field"><label for="s-situation">What is happening? <small>And where does it get stuck?</small></label><textarea id="s-situation" name="situation" required></textarea></div>
+      <div class="field"><label for="s-email">Email <small>Optional, only if you would like a reply</small></label><input id="s-email" name="email" type="email" autocomplete="email"></div>
+      <div><button class="btn btn--primary" type="submit">Send</button></div>
+      <p class="form-note" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 

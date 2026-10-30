@@ -5,7 +5,7 @@
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var mq=window.matchMedia('(max-width:700px)');
   var stopsEl=[].slice.call(map.querySelectorAll('.mstop')), cur=0, timer=null, prints=[], total=0, trail, g, vb;
-  var next=document.getElementById('nextStep'), again=document.getElementById('resetSteps');
+  var fin=document.getElementById('finale'), next=document.getElementById('nextStep'), again=document.getElementById('resetSteps');
   function layout(){
     var tall=mq.matches; trail=document.getElementById(tall?'trailTall':'trailWide');
     g=trail.parentNode.querySelector('.prints'); vb=tall?[360,660]:[1000,500];
@@ -47,8 +47,8 @@
   }
   function ui(){
     stopsEl.forEach(function(el,i){el.classList.toggle('is-reached',i<=cur);el.classList.toggle('is-current',i===cur);});
-    var last=cur===FR.length-1; next.hidden=last; again.hidden=!last;
-    next.textContent='Next step: '+stopsEl[Math.min(cur+1,5)].querySelector('b').textContent.toLowerCase();
+    var last=cur===FR.length-1; next.hidden=last; again.hidden=!last; if(fin){fin.classList.toggle('is-live',last);if(last&&!reduce&&fin.scrollIntoView){setTimeout(function(){fin.scrollIntoView({behavior:'smooth',block:'nearest'});},350);}}
+    var nl=stopsEl[Math.min(cur+1,5)].querySelector('b').textContent.toLowerCase(); next.textContent=cur===4?'Next: see it live':'Next step: '+nl;
   }
   stopsEl.forEach(function(el,i){el.querySelector('.mstop__dot').addEventListener('click',function(){walkTo(i);});});
   next.addEventListener('click',function(){walkTo(Math.min(cur+1,FR.length-1));});
