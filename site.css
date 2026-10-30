@@ -370,8 +370,6 @@ canvas.ink { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3
 .footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 28px; }
 .footer a { color: inherit; }
 .footer .mail { user-select: all; }
-.copy { font: inherit; font-size: 0.85rem; margin-left: 8px; padding: 2px 10px; cursor: pointer; color: var(--ink); background: transparent; border: 1px solid var(--rule); border-radius: 3px; }
-.copy:hover { border-color: var(--ink); }
 
 /* ---- Motion preferences ---------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
@@ -450,8 +448,8 @@ canvas.ink { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3
 /* Home: the about laptop */
 .section--about{background:var(--paper-deep);padding-block:clamp(40px,7vw,72px)}
 .laptop{position:relative;width:min(640px,100%);margin-inline:auto;aspect-ratio:16/11.4;perspective:1700px}
-.laptop__rig{position:absolute;inset:0;transform-style:preserve-3d;transform:translateY(0) rotateX(-20deg) rotateY(-16deg)}
-.laptop__lid{position:absolute;left:6%;right:6%;top:0;height:64%;background:linear-gradient(160deg,#2a3446,#161e29);border-radius:16px 16px 4px 4px;padding:2.6% 2.6% 3.4%;transform-origin:50% 100%;transform:rotateX(16deg);box-shadow:0 0 0 1px #3b475b inset}
+.laptop__rig{position:absolute;inset:0;pointer-events:none;transform-style:preserve-3d;transform:translateY(0) rotateX(-20deg) rotateY(-16deg)}
+.laptop__lid{pointer-events:auto;position:absolute;left:6%;right:6%;top:0;height:64%;background:linear-gradient(160deg,#2a3446,#161e29);border-radius:16px 16px 4px 4px;padding:2.6% 2.6% 3.4%;transform-origin:50% 100%;transform:rotateX(16deg);box-shadow:0 0 0 1px #3b475b inset}
 .laptop__screen{position:relative;height:100%;background:#0d1522;border-radius:8px;overflow:hidden;color:#cfe1ff;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 .screen__bar{display:flex;align-items:center;gap:6px;height:7%;min-height:20px;padding:0 10px;background:#17233a;font-size:clamp(9px,1.5vw,12px);color:#7f93b8}
 .screen__bar i{width:8px;height:8px;border-radius:50%;background:#3a4a6b}.screen__bar span{margin-left:8px}
@@ -511,10 +509,19 @@ canvas.ink { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3
 /* Home: the contact band with the form */
 .band__inner--form{display:grid;gap:32px;align-items:start}
 @media(min-width:860px){.band__inner--form{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px}}
-.band__alt{margin-top:22px}
 .form--dark .field label{color:#fff}
 .form--dark .field small{color:#b9c3d0}
 .form--dark .field input,.form--dark .field textarea{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);color:#fff}
 .form--dark .field input:focus,.form--dark .field textarea:focus{outline:3px solid #8fa2ff;border-color:#8fa2ff}
 .form--dark .form-note{color:#fff}.form--dark .form-note[data-state="ok"]{color:#8de3b0}.form--dark .form-note[data-state="error"]{color:#ffb3ad}
 
+.form--dark .need{border:0;padding:0;margin:0;min-width:0}
+.form--dark .need legend{padding:0;margin-bottom:10px;font-family:var(--f-display);font-weight:620;color:#fff}
+.form--dark .need legend small{font-weight:450;color:#b9c3d0;margin-left:6px}
+.need__opts{display:flex;flex-wrap:wrap;gap:10px}
+.need__opt{position:relative;display:inline-block}
+.need__opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.need__opt span{display:inline-block;padding:10px 16px;border:1.5px solid rgba(255,255,255,.45);border-radius:999px;color:#fff;font-family:var(--f-display);font-weight:560;line-height:1.2;transition:background-color .15s,color .15s,border-color .15s}
+.need__opt:hover span{border-color:#fff}
+.need__opt input:checked + span{background:#fff;color:var(--ink);border-color:#fff}
+.need__opt input:focus-visible + span{outline:3px solid #8fa2ff;outline-offset:2px}

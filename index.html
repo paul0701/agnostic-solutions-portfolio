@@ -135,11 +135,19 @@
     <div>
       <h2 class="h2" id="talk-h">Got a situation that could work better?</h2>
       <p class="lead" style="margin-top:14px">Tell me what is happening and where it gets stuck. No blame, just the situation.</p>
-      <p class="band__alt"><button type="button" class="btn" data-copy-email>Copy my email address</button></p>
     </div>
     <form class="form form--dark" name="situation" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="situation">
       <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <fieldset class="need">
+        <legend>What do you need? <small>Pick the closest</small></legend>
+        <div class="need__opts">
+          <label class="need__opt"><input type="radio" name="need" value="Website" required><span>A website</span></label>
+          <label class="need__opt"><input type="radio" name="need" value="App (PWA)"><span>An app (PWA)</span></label>
+          <label class="need__opt"><input type="radio" name="need" value="Process improvement"><span>Process improvement</span></label>
+          <label class="need__opt"><input type="radio" name="need" value="Something else"><span>Something else</span></label>
+        </div>
+      </fieldset>
       <div class="field"><label for="s-situation">What is happening? <small>And where does it get stuck?</small></label><textarea id="s-situation" name="situation" required></textarea></div>
       <div class="field"><label for="s-email">Email <small>Optional, only if you would like a reply</small></label><input id="s-email" name="email" type="email" autocomplete="email"></div>
       <div><button class="btn btn--primary" type="submit">Send</button></div>
@@ -152,7 +160,7 @@
 <footer class="footer">
   <div class="wrap footer__inner">
     <p>&copy; 2026 Paul Jones. Agnostic Solutions Ltd.</p>
-    <p><span class="mail">paul@agnosticsolutions.co.uk</span> <button type="button" class="copy" data-copy-email>Copy</button></p>
+    <p><span class="mail">paul@agnosticsolutions.co.uk</span></p>
   </div>
 </footer>
 <script src="config.js"></script>
