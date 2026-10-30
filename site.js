@@ -1,4 +1,4 @@
-/* Shared behaviour: the mobile menu, the vote, the situation form, the email copy buttons and the
+/* Shared behaviour: the mobile menu, the vote, the situation form and the
    game previews. Each part only runs on the pages that have it. */
 (function () {
   'use strict';
@@ -100,17 +100,6 @@
       fetch('/', { method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: body })
         .then(function (r) { if (!r.ok) throw new Error('bad'); form.reset(); fnote.setAttribute('data-state', 'ok'); fnote.textContent = 'Sent. Thank you, I will read it.'; })
         .catch(function () { fnote.setAttribute('data-state', 'error'); fnote.textContent = 'That did not send. You can email ' + (PJ.email || 'me') + ' instead.'; });
-    });
-  });
-
-  /* ---- Email: copy the address instead of opening a mail app (mailto: jumps straight into Outlook) ---- */
-  [].slice.call(document.querySelectorAll('[data-copy-email]')).forEach(function (b) {
-    var label = b.textContent;
-    b.addEventListener('click', function () {
-      var done = function (t) { b.textContent = t; setTimeout(function () { b.textContent = label; }, 2000); };
-      var addr = PJ.email || '';
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(addr).then(function () { done('Copied'); }, function () { done(addr); });
-      else done(addr);
     });
   });
 
